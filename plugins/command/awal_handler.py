@@ -46,7 +46,7 @@ async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
     keyboard = [
-        [InlineKeyboardButton("ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https//t.me/topupcoinbot?start=start")],
+        [InlineKeyboardButton("                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     pesan = '<b>❏ User Info:</b>\n'
