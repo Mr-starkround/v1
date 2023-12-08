@@ -221,7 +221,7 @@ async def topup_handler(client: Client, msg: types.Message):
         ],
     ]
     await msg.reply_text(
-        text=config.start_msg.format(
+        text=config.topup_msg.format(
             id=msg.from_user.id,
             mention=mention,
             username=username,
