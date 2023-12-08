@@ -32,7 +32,7 @@ class Helper():
         image.save(img_byte_arr, format='PNG')
         img_byte_arr.seek(0)
 
-        file_id = await self.client.send_photo(chat_id=self.msg.chat.id, photo=img_byte_arr)
+        file_id = await self.client.send_photo(chat_id=self.msg.chat.id)
 
         file_link = f'tg://openmessage?user_id={self.msg.from_user.id}&message_id={file_id}'
         message_text = f'<a href="{file_link}">&#8203;</a>'
