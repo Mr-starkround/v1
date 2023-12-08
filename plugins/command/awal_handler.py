@@ -120,11 +120,6 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
             InlineKeyboardButton(
                 "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
             ),
-    ],
-[
-            InlineKeyboardButton(
-                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start"
-            ),
         ],
     ]
     await msg.reply_text(
@@ -146,7 +141,7 @@ async def cb_help(client, callback_query):
     buttons = [
         [
             InlineKeyboardButton(
-                "ᴛᴜᴛᴜᴘ", callback_data="ttp"
+                "ᴄʟᴏsᴇ", callback_data="ttp"
             ),
         ],
     ]
@@ -217,7 +212,7 @@ async def reply_with_image_text(client: Client, msg: types.Message, text: str, i
     username = (
         f'@{msg.from_user.username}'
         if msg.from_user.username
-        else '@OwnNeko'
+        else '@vxnjul'
     )
     mention = msg.from_user.mention
     with Image.open(image_path) as image:
