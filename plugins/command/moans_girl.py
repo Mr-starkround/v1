@@ -8,7 +8,17 @@ async def moans_girl_handler(client: Client, msg: types.Message):
     db = Database(msg.from_user.id)
     moans_girl = db.get_data_bot(client.id_bot).moansgirl
     if len(moans_girl) == 0:
-        return await msg.reply('<b>Saat ini tidak ada Moans girl yang tersedia.</b>', True, enums.ParseMode.HTML)
+        return await msg.reply('<b>anda bukan member fwbess
+Silahkan lakukan pendaftaran member bot fwbess
+
+❏ Cara daftar member fwbess melalui trakteer
+├ 1. Klik button daftar member bot fwbess dibawah
+├ 2. Nama: masukan username telegram kalian
+├ 3. Pesan dukungan: masukan code register
+├ 4. Masukan Jumlah 5 unit coin / 5000 rupiah
+└ BENEFIT DAFTAR MEMBER BOT FWBESS: bisa kirim promote dibot tiap hari permanen.
+
+Code register anda »  daftar 1020381855</b>', True, enums.ParseMode.HTML)
     top_rate = [] # total rate moans_girl
     top_id = [] # id moans_girl
     for uid in moans_girl:
