@@ -25,20 +25,8 @@ class Helper():
             if self.message.from_user.username
             else "-"
         )
-        self.mention = self.message.from_user.mention
-        
-    async def estimate_message(self, image):
-        img_byte_arr = io.BytesIO()
-        image.save(img_byte_arr, format='PNG')
-        img_byte_arr.seek(0)
-
-        file_id = await self.client.send_photo(chat_id=self.msg.chat.id)
-
-        file_link = f'tg://openmessage?user_id={self.msg.from_user.id}&message_id={file_id}'
-        message_text = f'<a href="{file_link}">&#8203;</a>'
-
-        return message_text
-
+        self.mention = self.message.from_user.mention        
+    
     async def escapeHTML(self, text: str):
         if text is None:
             return ''
