@@ -2,7 +2,7 @@ import os
 
 api_id = int(os.environ.get("API_ID", "21484185"))
 api_hash = os.environ.get("API_HASH", "42589444b3ee86b1286f01d966989214")
-bot_token = os.environ.get("BOT_TOKEN", "6872017467:AAEQAC59qKPm-6ML27z44DjLwZeCzx-wpVk")
+bot_token = os.environ.get("BOT_TOKEN", "6872017467:AAFx_RzH9bGA13iolTAYJNJlDWUfLjQ_C14")
 # =========================================================== #
 
 db_url = os.environ.get("DB_URL", "mongodb+srv://neko:<password>@nekomenfess.ss5r7je.mongodb.net/?retryWrites=true&w=majority")
