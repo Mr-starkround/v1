@@ -245,7 +245,7 @@ async def cb_topup(client, callback_query):
     buttons = [
         [
             InlineKeyboardButton(
-                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ", callback_data="tpp"
+                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ", url="https/t.me/topupcoinbot?start=start"
             ),
         ],
     ]
