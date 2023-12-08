@@ -31,7 +31,13 @@ start_msg = os.environ.get("START_MSG", """
 𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
 
 <b>silahkan baca help dan rules terlebih dahulu</b>""")
+# =========================================================== #
 
 gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
 {mention}Pesan anda gagal terkirim. <b>silahkan klik button help bila butuh bantuan</b>
+""")
+# =========================================================== #
+
+topup_msg = os.environ.get("PESAN_TOPUP", """
+❏ Haii {mention} \n\nJawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin. \ncoin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b> \n\napabila batas kirim harian belum habis. coin tidak akan berkurang \n\n<b>❏ Cara Membeli Coin Jawafess:</b> \n├ 1. Salin format top up dibawah👇🏻👇🏻 \n├ 2. Klik /belicoin \n├ 3. save qris dan lakukan pembayaran. \n├ 4. kirimkan bukti pembayaran beserta format topup \n└ <b>BENEFIT TOPUP COIN JAWAFESS:</b> bisa kirim menfess sebanyak-banyaknya diluar batasan harian
 """)
