@@ -239,23 +239,3 @@ async def topup_handler(client: Client, msg: types.Message):
         reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
     )
-
-async def cb_topup(client, callback_query):
-    user_id = callback_query.from_user.id
-     buttons = [
-        [
-            InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="ttp"
-            ),
-        ],
-    ]   
-    await callback_query.edit_message_text(
-        f"""
-test dulu
-""",
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(buttons),
-    )
-
-async def cb_close(client, callback_query):
-    await callback_query.message.delete()
