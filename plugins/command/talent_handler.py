@@ -8,7 +8,8 @@ async def talent_handler(client: Client, msg: types.Message):
     db = Database(msg.from_user.id)
     talent = db.get_data_bot(client.id_bot).talent
     if len(talent) == 0:
-        return await msg.reply('<b>Saat ini tidak ada talent yang tersedia.</b>', True, enums.ParseMode.HTML)
+        return await msg.reply('<b>anda bukan member fwbess \nSilahkan lakukan pendaftaran member bot fwbess \n\n❏ Cara daftar member fwbess melalui trakteer \n├ 1. Klik button daftar member bot fwbess dibawah \n├ 2. Nama: masukan username telegram kalian \n├ 3. Pesan dukungan: masukan code register \n├ 4. Masukan Jumlah 5 unit coin / 5000 rupiah \n└ BENEFIT DAFTAR MEMBER BOT FWBESS: bisa kirim promote dibot tiap hari permanen. \n\nCode register anda »  daftar 1020381855</b>', True, enums.ParseMode.HTML)
+        
     top_rate = [] # total rate talent
     top_id = [] # id talent
     for uid in talent:
