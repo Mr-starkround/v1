@@ -45,6 +45,10 @@ async def start_handler(client: Client, msg: types.Message):
 async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
+    keyboard = [
+        [InlineKeyboardButton("HELP", callback_data="nsj")],
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
     pesan = '<b>❏ User Info:</b>\n'
     pesan += f'├<b>Nama :</b> {db.mention}\n'
     pesan += f'├<b>User ID :</b> <code>{db.id}</code>\n'
@@ -171,10 +175,7 @@ async def help_handler(client, msg):
     db = Database(msg.from_user.id)
     member = db.get_data_pelanggan()
 
-    pesan = "Supported commands\n" + '/status — melihat status\n'
-    pesan += '<b>anda bukan member fwbess \nSilahkan lakukan pendaftaran member bot fwbess \n\n❏ Cara daftar member fwbess melalui trakteer \n├ 1. Klik button daftar member bot fwbess dibawah \n├ 2. Nama: masukan username telegram kalian \n├ 3. Pesan dukungan: masukan code register \n├ 4. Masukan Jumlah 5 unit coin / 5000 rupiah \n└ BENEFIT DAFTAR MEMBER BOT FWBESS: bisa kirim promote dibot tiap hari permanen. \n\nCode register anda »  daftar {user.id}</b>\n'
-    pesan = "Supported commands\n" + '/status — melihat status\n'
-    pesan += '/talent — melihat talent\n'
+    pesan = "Supported commands\n" + '/status — melihat status\n'    
     pesan += '/tf_coin — transfer coin\n'
 
     # Tambahkan InlineKeyboardButton "JASA" di sini
