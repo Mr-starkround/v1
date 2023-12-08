@@ -239,7 +239,7 @@ async def cb_topup(client, callback_query):
     buttons = [
         [
             InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="ttp"
+                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ", callback_data="tpp"
             ),
         ],
     ]
