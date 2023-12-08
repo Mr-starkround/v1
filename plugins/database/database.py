@@ -34,12 +34,14 @@ class Database():
         }
         await self.tambah_pelanggan(data)
 
-    async def cek_user_didatabase(self):
-        return bool(found := mycol.find_one({'_id': self.user_id}))
 
-    async def tambah_pelanggan(self, data):
-        mycol.insert_one(data)
-    
+    async def cek_user_didatabase(self):
+        found = mycol.find_one({'_id': self.user_id})
+        if found:
+            return True
+        else:
+            return False
+
     async def hapus_pelanggan(self, user_id: int):
         mycol.delete_one({'_id': user_id})
         return
