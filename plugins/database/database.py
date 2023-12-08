@@ -97,8 +97,7 @@ class Database():
                     "status": f"admin_{id_admin}",
                     "coin": f"{coin_awal + 1000}_{id_admin}",
                 }
-            },
-        )
+            })
         mycol.update_one(last_data, {"$set": {"admin": data}})
 
     async def hapus_admin(self, id_admin: int, id_bot: int):
