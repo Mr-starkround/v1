@@ -222,7 +222,7 @@ async def topup_handler(client: Client, msg: types.Message):
     buttons = [
         [           
             InlineKeyboardButton(
-                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url=https//t.me/topupcoinbot?start=start"
+                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https//t.me/topupcoinbot?start=start"
             ),           
         ],
     ]
