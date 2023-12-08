@@ -34,8 +34,6 @@ class Database():
         }
         await self.tambah_pelanggan(data)
 
-
-
     async def cek_user_didatabase(self):
         found = mycol.find_one({'_id': self.user_id})
         if found:
