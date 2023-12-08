@@ -12,23 +12,17 @@ from .waktu import Waktu
 class Helper():
     def __init__(self, bot: Client, message: Message):
         self.bot = bot
-        self.client = bot  
         self.message = message
-        self.msg = message
         self.user_id = message.from_user.id
         self.first = message.from_user.first_name
         self.last = message.from_user.last_name
-        self.fullname = f'{self.first} {self.last}' if self.last else self.first
+        self.fullname = self.first if not self.last else self.first + ' ' + self.last
         self.premium = message.from_user.is_premium
-        self.username = (
-            f'@{self.message.from_user.username}'
-            if self.message.from_user.username
-            else "-"
-        )
-        self.mention = self.message.from_user.mention        
-    
+        self.username = "-" if not self.message.from_user.username else '@' + self.message.from_user.username
+        self.mention = self.message.from_user.mention
+
     async def escapeHTML(self, text: str):
-        if text is None:
+        if text == None:
             return ''
         return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
@@ -37,10 +31,6 @@ class Helper():
             return True
         try:
             member = await self.bot.get_chat_member(config.channel_1, user_id)
-        except UserNotParticipant:
-            return False
-        try:
-            member = await self.bot.get_chat_member(config.channel_2, user_id)
         except UserNotParticipant:
             return False
 
