@@ -215,7 +215,7 @@ async def topup_handler(client: Client, msg: types.Message):
     buttons = [
         [           
             InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
+                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url=https//t.me/topupcoinbot?start=start"
             ),           
         ],
     ]
