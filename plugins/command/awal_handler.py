@@ -202,9 +202,7 @@ async def help_handler(client, msg):
         pesan += '/ban — ban user\n'
         pesan += '/unban — unban user\n'
 
-    await msg.reply_text(pesan, True, reply_markup=reply_markup)
-
-async def reply_with_image_text(client: Client, msg: types.Message, text: str, image_path: str):
+async def topup_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     first = msg.from_user.first_name
     last = msg.from_user.last_name
@@ -215,17 +213,43 @@ async def reply_with_image_text(client: Client, msg: types.Message, text: str, i
         else '@vxnjul'
     )
     mention = msg.from_user.mention
-    with Image.open(image_path) as image:
-        await msg.reply_photo(
-            photo=image,
-            caption=config.start_msg.format(
-                id=msg.from_user.id,
-                mention=mention,
-                username=username,
-                first_name=await helper.escapeHTML(first),
-                last_name=await helper.escapeHTML(last),
-                fullname=await helper.escapeHTML(fullname),
+    buttons = [
+        [           
+            InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
+            ),           
+        ],
+    ]
+    await msg.reply_text(
+        text=config.start_msg.format(
+            id=msg.from_user.id,
+            mention=mention,
+            username=username,
+            first_name=await helper.escapeHTML(first),
+            last_name=await helper.escapeHTML(last),
+            fullname=await helper.escapeHTML(fullname),
+        ),
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup(buttons),
+        quote=True
+    )
+
+async def cb_topup(client, callback_query):
+    user_id = callback_query.from_user.id
+    buttons = [
+        [
+            InlineKeyboardButton(
+                "ᴄʟᴏsᴇ", callback_data="ttp"
             ),
-            disable_web_page_preview=True,
-            quote=True
-        )
+        ],
+    ]
+    await callback_query.edit_message_text(
+        f"""
+test dulu
+""",
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup(buttons),
+    )
+
+async def cb_close(client, callback_query):
+    await callback_query.message.delete()
