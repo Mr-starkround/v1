@@ -44,7 +44,6 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     keyboard = [
         [InlineKeyboardButton("HELP", callback_data="nsj")],
     ]
-    else:
         await msg.reply('media yang didukung photo, video dan voice')
     reply_markup = InlineKeyboardMarkup(keyboard)
 
