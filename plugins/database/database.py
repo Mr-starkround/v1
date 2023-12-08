@@ -43,7 +43,7 @@ class Database():
 
     async def tambah_pelanggan(self, data):
         mycol.insert_one(data)
-    
+
     async def hapus_pelanggan(self, user_id: int):
         mycol.delete_one({'_id': user_id})
         return
@@ -66,7 +66,7 @@ class Database():
         new = { "$set": { "menfess": 0 } }
         x = mycol.update_many({}, new)
         return x.modified_count
-        
+
     async def transfer_coin(self, ditranfer: int, diterima: int, coin_awal_target_full: int, id_target: int):
         coin_awal_user = self.get_data_pelanggan().coin_full
         a = mycol.update_one(
@@ -91,12 +91,11 @@ class Database():
         last_status = self.get_data_pelanggan().status_full
         coin_awal = self.get_data_pelanggan().coin
         mycol.update_one(
-            {"status": last_status, "coin": f"{coin_awal}_{id_admin}"},
-            {
-                "$set": {
-                    "status": f"admin_{id_admin}",
-                    "coin": f"{coin_awal + 1000}_{id_admin}",
-                }
+            {"status": last_status, "coin": f"{coin_awal}_{str(id_admin)}"},
+            {"$set": {
+                "status": f"admin_{str(id_admin)}",
+                "coin": f"{(coin_awal + 1000)}_{str(id_admin)}"
+            }
             })
         mycol.update_one(last_data, {"$set": {"admin": data}})
 
@@ -110,14 +109,12 @@ class Database():
         last_status = self.get_data_pelanggan().status_full
         coin_awal = self.get_data_pelanggan().coin
         mycol.update_one(
-            {"status": last_status, "coin": f"{coin_awal}_{id_admin}"},
-            {
-                "$set": {
-                    "status": f"member_{id_admin}",
-                    "coin": f"{coin_awal - 1000}_{id_admin}",
-                }
-            },
-        )
+            {"status": last_status, "coin": f"{coin_awal}_{str(id_admin)}"},
+            {"$set": {
+                "status": f"member_{str(id_admin)}",
+                "coin": f"{(coin_awal - 1000)}_{str(id_admin)}"
+            }
+            })
         mycol.update_one(last_data, {"$set": {"admin": data}})
 
     async def banned_user(self, id_banned: int, id_bot: int, alasan: str):
@@ -125,13 +122,14 @@ class Database():
             "ban": self.get_data_bot(id_bot).ban
         }
         new_data = self.get_data_bot(id_bot).ban
-        new_data[str(id_banned)] = alasan
+        new_data[str(id_banned)] = str(alasan)
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
-            {"status": last_status}, {"$set": {"status": f"banned_{id_banned}"}}
-        )
+            {"status": last_status},
+            {"$set": {"status": f"banned_{str(id_banned)}"}
+             })
         mycol.update_one(last_data, {"$set": {"ban": new_data}})
-    
+
     async def unban_user(self, id_banned: int, id_bot: int):
         last_data = {
             "ban": self.get_data_bot(id_bot).ban
@@ -140,7 +138,8 @@ class Database():
         del new_data[str(id_banned)]
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
-            {"status": last_status}, {"$set": {"status": f"member_{id_banned}"}}
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_banned)}"}}
         )
         mycol.update_one(last_data, {"$set": {"ban": new_data}})
 
@@ -151,13 +150,14 @@ class Database():
         new_data = self.get_data_bot(id_bot).talent
         new_data[str(id_talent)] = {
             "nama": nama,
-            "username": f"<a href='tg://openmessage?user_id={id_talent}'>{nama}</a>",
-            "rate": 0,
+            "username": f"<a href='tg://openmessage?user_id={str(id_talent)}'>{nama}</a>",
+            "rate": 0
         }
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
-            {"status": last_status}, {"$set": {"status": f"talent_{id_talent}"}}
-        )
+            {"status": last_status},
+            {"$set": {"status": f"talent_{str(id_talent)}"}
+             })
         mycol.update_one(last_data, {"$set": {"talent": new_data}})
 
     async def hapus_talent(self, id_talent: int, id_bot: int):
@@ -168,7 +168,8 @@ class Database():
         del new_data[str(id_talent)]
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
-            {"status": last_status}, {"$set": {"status": f"member_{id_talent}"}}
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_talent)}"}}
         )
         mycol.update_one(last_data, {"$set": {"talent": new_data}})
 
@@ -193,14 +194,14 @@ class Database():
         new_data = self.get_data_bot(id_bot).daddy_sugar
         new_data[str(id_talent)] = {
             "nama": nama,
-            "username": f"<a href='tg://openmessage?user_id={id_talent}'>{nama}</a>",
-            "rate": 0,
+            "username": f"<a href='tg://openmessage?user_id={str(id_talent)}'>{nama}</a>",
+            "rate": 0
         }
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
             {"status": last_status},
-            {"$set": {"status": f"daddy sugar_{id_talent}"}},
-        )
+            {"$set": {"status": f"daddy sugar_{str(id_talent)}"}
+             })
         mycol.update_one(last_data, {"$set": {"daddy_sugar": new_data}})
 
     async def hapus_sugar_daddy(self, id_talent: int, id_bot: int):
@@ -211,7 +212,8 @@ class Database():
         del new_data[str(id_talent)]
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
-            {"status": last_status}, {"$set": {"status": f"member_{id_talent}"}}
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_talent)}"}}
         )
         mycol.update_one(last_data, {"$set": {"daddy_sugar": new_data}})
 
@@ -236,14 +238,14 @@ class Database():
         new_data = self.get_data_bot(id_bot).moansgirl
         new_data[str(id_talent)] = {
             "nama": nama,
-            "username": f"<a href='tg://openmessage?user_id={id_talent}'>{nama}</a>",
-            "rate": 0,
+            "username": f"<a href='tg://openmessage?user_id={str(id_talent)}'>{nama}</a>",
+            "rate": 0
         }
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
             {"status": last_status},
-            {"$set": {"status": f"moans girl_{id_talent}"}},
-        )
+            {"$set": {"status": f"moans girl_{str(id_talent)}"}
+             })
         mycol.update_one(last_data, {"$set": {"moansgirl": new_data}})
 
     async def hapus_moans_girl(self, id_talent: int, id_bot: int):
@@ -254,7 +256,8 @@ class Database():
         del new_data[str(id_talent)]
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
-            {"status": last_status}, {"$set": {"status": f"member_{id_talent}"}}
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_talent)}"}}
         )
         mycol.update_one(last_data, {"$set": {"moansgirl": new_data}})
 
@@ -271,7 +274,7 @@ class Database():
             {"$set": {"coin": f"{coin}_{self.user_id}"}}
         )
         mycol.update_one(last_data, {"$set": {"moansgirl": new_data}})
-    
+
     async def tambah_moans_boy(self, id_talent: int, id_bot: int, nama: str):
         last_data = {
             "moansboy": self.get_data_bot(id_bot).moansboy
@@ -279,15 +282,16 @@ class Database():
         new_data = self.get_data_bot(id_bot).moansboy
         new_data[str(id_talent)] = {
             "nama": nama,
-            "username": f"<a href='tg://openmessage?user_id={id_talent}'>{nama}</a>",
-            "rate": 0,
+            "username": f"<a href='tg://openmessage?user_id={str(id_talent)}'>{nama}</a>",
+            "rate": 0
         }
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
-            {"status": last_status}, {"$set": {"status": f"moans boy_{id_talent}"}}
-        )
+            {"status": last_status},
+            {"$set": {"status": f"moans boy_{str(id_talent)}"}
+             })
         mycol.update_one(last_data, {"$set": {"moansboy": new_data}})
-    
+
     async def hapus_moans_boy(self, id_talent: int, id_bot: int):
         last_data = {
             "moansboy": self.get_data_bot(id_bot).moansboy
@@ -296,7 +300,8 @@ class Database():
         del new_data[str(id_talent)]
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
-            {"status": last_status}, {"$set": {"status": f"member_{id_talent}"}}
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_talent)}"}}
         )
         mycol.update_one(last_data, {"$set": {"moansboy": new_data}})
 
@@ -321,16 +326,16 @@ class Database():
         new_data = self.get_data_bot(id_bot).gfrent
         new_data[str(id_talent)] = {
             "nama": nama,
-            "username": f"<a href='tg://openmessage?user_id={id_talent}'>{nama}</a>",
-            "rate": 0,
+            "username": f"<a href='tg://openmessage?user_id={str(id_talent)}'>{nama}</a>",
+            "rate": 0
         }
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
             {"status": last_status},
-            {"$set": {"status": f"girlfriend rent_{id_talent}"}},
-        )
+            {"$set": {"status": f"girlfriend rent_{str(id_talent)}"}
+             })
         mycol.update_one(last_data, {"$set": {"gfrent": new_data}})
-    
+
     async def hapus_gf_rent(self, id_talent: int, id_bot: int):
         last_data = {
             "gfrent": self.get_data_bot(id_bot).gfrent
@@ -339,10 +344,11 @@ class Database():
         del new_data[str(id_talent)]
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
-            {"status": last_status}, {"$set": {"status": f"member_{id_talent}"}}
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_talent)}"}}
         )
         mycol.update_one(last_data, {"$set": {"gfrent": new_data}})
-    
+
     async def rate_gf_rent(self, id_talent: str, id_bot: int, coin: int):
         last_data = {
             "gfrent": self.get_data_bot(id_bot).gfrent
@@ -356,7 +362,7 @@ class Database():
             {"$set": {"coin": f"{coin}_{self.user_id}"}}
         )
         mycol.update_one(last_data, {"$set": {"gfrent": new_data}})
-    
+
     async def tambah_bf_rent(self, id_talent: int, id_bot: int, nama: str):
         last_data = {
             "bfrent": self.get_data_bot(id_bot).bfrent
@@ -364,14 +370,14 @@ class Database():
         new_data = self.get_data_bot(id_bot).bfrent
         new_data[str(id_talent)] = {
             "nama": nama,
-            "username": f"<a href='tg://openmessage?user_id={id_talent}'>{nama}</a>",
-            "rate": 0,
+            "username": f"<a href='tg://openmessage?user_id={str(id_talent)}'>{nama}</a>",
+            "rate": 0
         }
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
             {"status": last_status},
-            {"$set": {"status": f"boyfriend rent_{id_talent}"}},
-        )
+            {"$set": {"status": f"boyfriend rent_{str(id_talent)}"}
+             })
         mycol.update_one(last_data, {"$set": {"bfrent": new_data}})
 
     async def hapus_bf_rent(self, id_talent: int, id_bot: int):
@@ -382,7 +388,8 @@ class Database():
         del new_data[str(id_talent)]
         last_status = self.get_data_pelanggan().status_full
         mycol.update_one(
-            {"status": last_status}, {"$set": {"status": f"member_{id_talent}"}}
+            {"status": last_status},
+            {"$set": {"status": f"member_{str(id_talent)}"}}
         )
         mycol.update_one(last_data, {"$set": {"bfrent": new_data}})
 
@@ -399,9 +406,9 @@ class Database():
             {"$set": {"coin": f"{coin}_{self.user_id}"}}
         )
         mycol.update_one(last_data, {"$set": {"bfrent": new_data}})
-    
+
     async def bot_handler(self, status: str):
-        if status in {'on', '<on>'}:
+        if status == 'on' or status == '<on>':
             bot_status = True
             last_data = {"bot_status": False}
         else:
@@ -480,7 +487,10 @@ class Database():
         mycol.update_one(last_data, photo_status)
 
     def get_pelanggan(self):
-        user_id = [doc['_id'] for doc in mycol.find()]
+        user_id = []
+        for doc in mycol.find():
+            user_id.append(doc['_id'])
+
         return get_pelanggan(user_id)
 
     def get_data_pelanggan(self):
@@ -499,12 +509,31 @@ class get_pelanggan():
         self.json = { "total_pelanggan": len(args), "id_pelanggan": args }
 
     def get_data_pelanggan(self, index: int = 0):
-        if found := mycol.find_one({'_id': self.id_pelanggan[index]}):
+        found = mycol.find_one({'_id': self.id_pelanggan[index]})
+        if found:
             return data_pelanggan(found)
         else:
             return 'ID tidak ditemukan'
     def __str__(self) -> str:
         return str(json.dumps(self.json, indent=3))
+
+class data_pelanggan():
+    def __init__(self, args):
+        self.id = args['_id']
+        self.nama = str(args['nama'])
+        self.mention = f'<a href="tg://user?id={self.id}">{self.nama}</a>'
+        self.coin = int(args['coin'].split('_')[0])
+        self.coin_full = str(args['coin'])
+        self.status = str(args['status'].split('_')[0])
+        self.status_full = str(args['status'])
+        self.menfess = int(args['menfess'])
+        self.all_menfess = int(args['all_menfess'])
+        self.sign_up = args['sign_up']
+        self.json = args
+
+    def __str__(self) -> str:
+        return str(json.dumps(self.json, indent=3))
+
 
 class data_bot():
     def __init__(self, args):
