@@ -208,7 +208,7 @@ async def help_handler(client, msg):
         pesan += '/ban — ban user\n'
         pesan += '/unban — unban user\n'
 
-async def status_handler(client: Client, msg: types.Message):
+async def topup_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
     keyboard = [
