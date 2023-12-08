@@ -208,34 +208,18 @@ async def help_handler(client, msg):
         pesan += '/ban — ban user\n'
         pesan += '/unban — unban user\n'
 
-async def topup_handler(client: Client, msg: types.Message):
+async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
-    first = msg.from_user.first_name
-    last = msg.from_user.last_name
-    fullname = f'{first} {last}' if last else first
-    username = (
-        f'@{msg.from_user.username}'
-        if msg.from_user.username
-        else '@vxnjul'
-    )
-    mention = msg.from_user.mention
-    buttons = [
-        [           
-            InlineKeyboardButton(
-                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https//t.me/topupcoinbot?start=start"
-            ),           
-        ],
+    db = Database(msg.from_user.id).get_data_pelanggan()
+    keyboard = [
+        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
     ]
-    await msg.reply_text(
-        text=config.topup_msg.format(
-            id=msg.from_user.id,
-            mention=mention,
-            username=username,
-            first_name=await helper.escapeHTML(first),
-            last_name=await helper.escapeHTML(last),
-            fullname=await helper.escapeHTML(fullname),
-        ),
-        disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(buttons),
-        quote=True
-    )
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    pesan = '<b>❏ ❏ Cara top up coin jawafess</b>\n'
+    pesan += f'├1. Klik start di bot @topupcoinbot\n'
+    pesan += f'├2. Klik belicoin\n'
+    pesan += f'├3. save qris dan lakukan pembayaran.\n'
+    pesan += f'├4. kirimkan bukti pembayaran beserta format topup\n'
+    pesan += f'└ <b>BENEFIT TOPUP COIN JAWAFESS:</b> bisa kirim menfess sebanyak-banyaknya diluar batasan harian'
+    
+    await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
