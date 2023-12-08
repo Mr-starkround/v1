@@ -4,31 +4,6 @@ import re
 from pyrogram import Client, types, enums
 from plugins import Database, Helper
 
-async def send_with_pic_handler(client: Client, msg: types.Message, key: str, hastag: list):
-    db = Database(msg.from_user.id)
-    helper = Helper(client, msg)
-    user = db.get_data_pelanggan()
-    if msg.text or msg.photo or msg.video or msg.voice:
-        menfess = user.menfess
-        all_menfess = user.all_menfess
-        coin = user.coin
-        if menfess >= config.batas_kirim:
-            if user.status == 'member' or user.status == 'talent':
-                if coin >= config.biaya_kirim:
-                    coin = user.coin - config.biaya_kirim
-                else:
-                    return await msg.reply(f'❌ Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\n<b>Kamu dapat mengirim menfess kembali pada esok hari/top up coin untuk mengirim diluar batas harianmu. Topup Coin silahkan hubungi</b> @vxnjul', quote=True)       
-
-        link = await get_link()
-        caption = msg.text or msg.caption
-        entities = msg.entities or msg.caption_entities
-
-        kirim = await client.send_photo(config.channel_1, caption, caption_entities=entities)
-        await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
-        await db.update_menfess(coin, menfess, all_menfess)
-        await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi")
-    else:
-        await msg.reply('media yang didukung photo, video dan voice')
 async def send_menfess_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
