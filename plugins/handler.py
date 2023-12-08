@@ -61,7 +61,7 @@ async def on_message(client: Client, msg: Message):
                 return await list_ban_handler(helper, client.id_bot)
 
             elif command == '/topup':
-                return await topup_handler(client, msg)
+                return await talent_handler(client, msg)
 
             elif command == '/daddysugar':
                 return await daddy_sugar_handler(client, msg)
