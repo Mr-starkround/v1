@@ -24,24 +24,14 @@ biaya_kirim = int(os.environ.get("BIAYA_KIRIM", "10"))
 hastag = os.environ.get("HASTAG", "#pft #pftt #mas #mba #story #spill #story").replace(" ", "|").lower()
 # =========================================================== #
 
-pesan_join = os.environ.get("PESAN_JOIN", "Tidak dapat diakses harap join terlebih dahulu")
-start_msg = os.environ.get("START_MSG", """"
-{mention},Silahkan gunakan hastag:
+pesan_join = os.environ.get("PESAN_JOIN", "Kamu harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel @JAWAFES. \n\nSilakan Join Ke Channel & Group dulu ⤵️")
+start_msg = os.environ.get("START_MSG", """
+❏ Haii {mention}
 
-#NekoBoy / #NekoGirl untuk Mencari Pasangan,Teman , Partner dll
-#NekoAsk untuk Bertanya
-#NekoStory untuk Berbagi Cerita
-#NekoSpill untuk Spill Masalah
-#NekoFind untuk Mencari Pasangan, Teman, Partner dll
+𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
 
-{fullname} 🌱\n\nIni adalah bot menfess, semua pesan yang kamu kirim akan masuk ke channel secara anonymous. ketik /help""")
+<b>silahkan baca help dan rules terlebih dahulu</b>""")
 
 gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
-{mention}, pesan mu gagal terkirim silahkan gunakan hastag:
-
-#NekoBoy / #NekoGirl untuk Mencari Pasangan, Teman , Partner dll
-#NekoAsk untuk Bertanya
-#NekoStory untuk Berbagi Cerita
-#NekoSpill untuk Spill Masalah
-#NekoFind untuk Mencari Pasangan, Teman, Partner dll
+{mention}Pesan anda gagal terkirim. <b>silahkan klik button help bila butuh bantuan</b>
 """)
