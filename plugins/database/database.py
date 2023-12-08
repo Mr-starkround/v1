@@ -509,18 +509,7 @@ class get_pelanggan():
 class data_pelanggan():
     def __init__(self, args):
         self.id = args['_id']
-        self.username = str(args.get('username', ''))  # Add the 'username' attribute
-        self.nama = str(args['nama'])
-        self.mention = f'<a href="tg://user?id={self.id}">{self.nama}</a>'
-        self.coin = int(args['coin'].split('_')[0])
-        self.coin_full = str(args['coin'])
-        self.status = str(args['status'].split('_')[0])
-        self.status_full = str(args['status'])
-        self.menfess = int(args['menfess'])
-        self.all_menfess = int(args['all_menfess'])
-        self.sign_up = args['sign_up']
-        self.json = args
-
+        self.username = str(args.get('username', ''))  
     def __str__(self) -> str:
         return str(json.dumps(self.json, indent=3))
 
