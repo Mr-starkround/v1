@@ -56,6 +56,10 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'└<b>Bergabung :</b> {db.sign_up}\n\n'
     pesan += '<b>❏Topup coin:</b> @topupcoinbot'
     await msg.reply(pesan, True, enums.ParseMode.HTML)
+    keyboard = [
+        [InlineKeyboardButton("HELP", callback_data="nsj")],
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
 
 async def statistik_handler(client: Helper, id_bot: int):
     db = Database(client.user_id)
