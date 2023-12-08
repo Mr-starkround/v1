@@ -44,7 +44,6 @@ class Database():
     async def tambah_pelanggan(self, data):
         mycol.insert_one(data)
     
-
     async def hapus_pelanggan(self, user_id: int):
         mycol.delete_one({'_id': user_id})
         return
