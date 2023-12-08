@@ -242,13 +242,13 @@ async def topup_handler(client: Client, msg: types.Message):
 
 async def cb_topup(client, callback_query):
     user_id = callback_query.from_user.id
-    buttons = [
+     buttons = [
         [
             InlineKeyboardButton(
-                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ", url="https/t.me/topupcoinbot?start=start"
+                "ᴄʟᴏsᴇ", callback_data="ttp"
             ),
         ],
-    ]
+    ]   
     await callback_query.edit_message_text(
         f"""
 test dulu
