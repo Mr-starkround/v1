@@ -146,12 +146,19 @@ async def cb_help(client, callback_query):
     ]
     await callback_query.edit_message_text(
         f"""
-<b>Silahkan kirim pesan anda menggunakan hashtag dibawah ini:</b>
+❏ Haii
 
+ <b>silahkan kirim pesan anda menggunakan hashtag:</b> 
 • <code>#mba</code> [ untuk identitas perempuan]
 • <code>#mas</code> [ untuk identitas laki-laki ]
+• <code>#spill</code> [ untuk spill masalah ]
+• <code>#tanya</code> [ untuk bertanya ]
+• <code>#story</code> [ untuk berbagi cerita/curhat ]
+• <code>#pap</code> [ khusus media foto/video ] 
 
-<b>Contoh pesan:</b> <code>#mas gabut banget gasi? callan yuk </code>
+<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk </code>
+
+<b>pastikan kamu sudah baca rules dan help</b>
 """,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(buttons),
