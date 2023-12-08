@@ -506,14 +506,6 @@ class get_pelanggan():
     def __str__(self) -> str:
         return str(json.dumps(self.json, indent=3))
 
-class data_pelanggan():
-    def __init__(self, args):
-        self.id = args['_id']
-        self.username = str(args.get('username', ''))  
-    def __str__(self) -> str:
-        return str(json.dumps(self.json, indent=3))
-
-
 class data_bot():
     def __init__(self, args):
         super().__init__()
