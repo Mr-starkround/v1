@@ -41,11 +41,11 @@ async def send_menfess_handler(client: Client, msg: types.Message):
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
         await msg.reply(f"pesan telah berhasil terkirim. hari ini kamu telah mengirim menfess sebanyak {menfess + 1}/{config.batas_kirim} . kamu dapat mengirim menfess sebanyak {config.batas_kirim} kali dalam sehari\n\nwaktu reset setiap jam 1 pagi\n<a href='{link + str(kirim.id)}'>check pesan kamu</a>")
-    keyboard = [
+        keyboard = [
         [InlineKeyboardButton("HELP", callback_data="nsj")],
     ]
-        await msg.reply('media yang didukung photo, video dan voice')
     reply_markup = InlineKeyboardMarkup(keyboard)
+            await msg.reply_text(pesan, True, reply_markup=reply_markup)
 
 async def get_link():
     anu = str(config.channel_1).split('-100')[1]
