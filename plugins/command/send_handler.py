@@ -8,11 +8,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 async def send_with_pic_handler(client: Client, msg: types.Message, key: str, hastag: list):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
-    user = db.get_data_pelanggan()
-    keyboard = [
-        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
+    user = db.get_data_pelanggan()   
     if msg.text or msg.photo or msg.video or msg.voice:
         menfess = user.menfess
         all_menfess = user.all_menfess
@@ -36,9 +32,13 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         kirim = await client.send_photo(config.channel_1, picture, caption, caption_entities=entities)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
-        await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi, True, enums.ParseMode.HTML,reply_markup=reply_markup")
+        await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi")
     else:
         await msg.reply('media yang didukung photo, video dan voice')
+    keyboard = [
+        [InlineKeyboardButton(                "ᴛᴏᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
 
 async def send_menfess_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
