@@ -26,10 +26,11 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
             picture = config.pic_boy
 
         link = await get_link()
+       lihat = await link + str(kirim.id)
         caption = msg.text or msg.caption
         entities = msg.entities or msg.caption_entities
 
-        kirim = await client.send_photo(config.channel_1, picture, caption, caption_entities=entities, link=link + str(kirim.id))
+        kirim = await client.send_photo(config.channel_1, picture, caption, caption_entities=entities, lihat)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", True, enums.ParseMode.HTML, reply_markup=reply_markup)
@@ -41,7 +42,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
-    keyboard = [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ ᴘᴇsᴀɴ", url="https://t.me/c/{link + str(kirim.id)}")],
+    keyboard = [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ ᴘᴇsᴀɴ", url="{lihat}")],
     reply_markup = InlineKeyboardMarkup(keyboard)
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
@@ -65,7 +66,8 @@ async def send_menfess_handler(client: Client, msg: types.Message):
                     return await msg.reply(f'❌ Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari/top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan ke</b> @topupcoinbot', True, enums.ParseMode.HTML)
 
         link = await get_link()       
-        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id, link=link + str(kirim.id))
+        lihat = await link + str(kirim.id)
+        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id, lihat)
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", True, enums.ParseMode.HTML, reply_markup=reply_markup)
