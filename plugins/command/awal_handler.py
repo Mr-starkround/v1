@@ -211,7 +211,7 @@ async def topup_handler(client: Client, msg: types.Message):
         [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    pesan = '<b>❏ Cara top up coin jawafess</b>\n'
+    pesan = '<b>❏ Cara top up coin Jawafess</b>\n'
     pesan += f'├1. Klik button top up dibawah\n'
     pesan += f'├2. Klik belicoin\n'
     pesan += f'├3. save qris dan lakukan pembayaran.\n'
