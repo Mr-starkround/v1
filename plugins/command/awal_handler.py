@@ -143,6 +143,7 @@ async def cb_help(client, callback_query):
     await callback_query.edit_message_text(
         f"""
  <b>silahkan kirim pesan anda menggunakan hashtag:</b> 
+
 • <code>#mba</code> [ untuk identitas perempuan]
 • <code>#mas</code> [ untuk identitas laki-laki ]
 • <code>#spill</code> [ untuk spill masalah ]
@@ -152,7 +153,7 @@ async def cb_help(client, callback_query):
 
 <b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk </code>
 
-<b>Pastikan lebih dari 3 kata</b>
+<b>Note:</b> Pastikan pesanmu lebih dari 3 kata.
 """,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(buttons),
@@ -166,8 +167,7 @@ async def help_handler(client, msg):
     db = Database(msg.from_user.id)
     member = db.get_data_pelanggan()
 
-    pesan = "Supported commands\n" + '/status — melihat status\n'    
-    pesan += '/tf_coin — transfer coin\n'
+    pesan = "Supported commands\n" + '/status — melihat status\n'       
 
     if member.status == 'admin':
         pesan += '\nHanya Admin\n'
