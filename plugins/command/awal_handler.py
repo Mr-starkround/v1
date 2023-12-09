@@ -142,8 +142,6 @@ async def cb_help(client, callback_query):
     ]
     await callback_query.edit_message_text(
         f"""
-❏ Haii
-
  <b>silahkan kirim pesan anda menggunakan hashtag:</b> 
 • <code>#mba</code> [ untuk identitas perempuan]
 • <code>#mas</code> [ untuk identitas laki-laki ]
@@ -170,12 +168,6 @@ async def help_handler(client, msg):
 
     pesan = "Supported commands\n" + '/status — melihat status\n'    
     pesan += '/tf_coin — transfer coin\n'
-
-    # Tambahkan InlineKeyboardButton "JASA" di sini
-    keyboard = [
-        [InlineKeyboardButton("HELP", callback_data="nsj")],
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
 
     if member.status == 'admin':
         pesan += '\nHanya Admin\n'
@@ -204,7 +196,7 @@ async def help_handler(client, msg):
         pesan += '/ban — ban user\n'
         pesan += '/unban — unban user\n'
 
-    await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
+    await msg.reply(pesan, True, enums.ParseMode.HTML)
 
 async def topup_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
