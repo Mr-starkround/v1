@@ -45,7 +45,7 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
-    keyboard = [InlineKeyboardButton(                "lihat pesan", url="https/t.me/get_link() {link + str(kirim.id)}")],
+    keyboard = [InlineKeyboardButton(                "lihat pesan", url="get_link() {link + str(kirim.id)}")],
     reply_markup = InlineKeyboardMarkup(keyboard)
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
