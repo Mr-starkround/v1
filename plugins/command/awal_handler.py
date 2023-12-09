@@ -154,7 +154,7 @@ async def cb_help(client, callback_query):
 
 <b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk </code>
 
-<b>pastikan kamu sudah baca rules dan help</b>
+<b>Pastikan lebih dari 3 kata</b>
 """,
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(buttons),
