@@ -214,8 +214,8 @@ async def topup_handler(client: Client, msg: types.Message):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     pesan = 'Jawafess coin di gunakan untuk biaya mengirim menfess ke @JAWAFES jika batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
-    pesan = 'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>\n\n'
-    pesan = '<b>❏ Cara top up coin Jawafess</b>\n'
+    pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>\n\n'
+    pesan += f'<b>❏ Cara top up coin Jawafess</b>\n'
     pesan += f'├1. Klik button top up dibawah\n'
     pesan += f'├2. Klik QRIS\n'
     pesan += f'├3. Lakukan pembayaran.\n'
