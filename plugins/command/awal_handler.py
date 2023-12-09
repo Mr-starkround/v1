@@ -45,10 +45,6 @@ async def start_handler(client: Client, msg: types.Message):
 async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
-    keyboard = [
-        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
     pesan = '<b>❏ User Info:</b>\n'
     pesan += f'├<b>Nama :</b> {db.mention}\n'
     pesan += f'├<b>User ID :</b> <code>{db.id}</code>\n'
@@ -215,7 +211,7 @@ async def topup_handler(client: Client, msg: types.Message):
         [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    pesan = '<b>❏ ❏ Cara top up coin jawafess</b>\n'
+    pesan = '<b>❏ Cara top up coin jawafess</b>\n'
     pesan += f'├1. Klik button top up dibawah\n'
     pesan += f'├2. Klik belicoin\n'
     pesan += f'├3. save qris dan lakukan pembayaran.\n'
