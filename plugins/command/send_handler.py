@@ -45,13 +45,12 @@ async def send_menfess_handler(client: Client, msg: types.Message):
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
+    keyboard = [InlineKeyboardButton(                "ᴛᴏᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start"),
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
-    keyboard = [
-        [InlineKeyboardButton(                "ᴛᴏᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
                 return await msg.reply('Tidak bisa mengirim photo, karena sedang dinonaktifkan oleh admin', True)
         elif msg.video and not db_bot.video:
             if db_user.status == 'member' or db_user.status == 'talent':
