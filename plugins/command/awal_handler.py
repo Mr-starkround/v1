@@ -216,10 +216,11 @@ async def topup_handler(client: Client, msg: types.Message):
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     pesan = '<b>❏ ❏ Cara top up coin jawafess</b>\n'
-    pesan += f'├1. Klik start di bot @topupcoinbot\n'
+    pesan += f'├1. Klik button top up dibawah\n'
     pesan += f'├2. Klik belicoin\n'
     pesan += f'├3. save qris dan lakukan pembayaran.\n'
     pesan += f'├4. kirimkan bukti pembayaran beserta format topup\n'
-    pesan += f'└ <b>BENEFIT TOPUP COIN JAWAFESS:</b> bisa kirim menfess sebanyak-banyaknya diluar batasan harian'
-    
+    pesan += f'└ <b>BENEFIT TOPUP COIN JAWAFESS:</b> bisa kirim menfess sebanyak-banyaknya diluar batasan harian\n\n'
+    pesan += f'<b>CATATAN:</b> apabila batas kirim harian belum habis. coin tidak akan berkurang'
+ 
     await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
