@@ -54,7 +54,7 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
     pesan += f'└<b>Bergabung :</b> {db.sign_up}'
-    await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
+    await msg.reply(pesan, True, enums.ParseMode.HTML)
 
 async def statistik_handler(client: Helper, id_bot: int):
     db = Database(client.user_id)
