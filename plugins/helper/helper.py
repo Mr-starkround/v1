@@ -31,6 +31,7 @@ class Helper():
             return True
         try:
             member = await self.bot.get_chat_member(config.channel_1, user_id)
+            member = await self.bot.get_chat_member(config.channel_2, user_id)
         except UserNotParticipant:
             return False
 
@@ -46,7 +47,7 @@ class Helper():
         link_2 = await self.bot.export_chat_invite_link(config.channel_2)
         markup = InlineKeyboardMarkup([
             [InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ ʙᴀsᴇ', url=link_1), InlineKeyboardButton('ɢʀᴏᴜᴘ ʙᴀsᴇ', url=link_2)],
-            [InlineKeyboardButton('ᴄᴏʙᴀ ʟᴀɢɪ', url='https://t.me/{self.bot.username}?start=start')]
+            [InlineKeyboardButton('ᴄᴏʙᴀ ʟᴀɢɪ', url='https://t.me/jawafessbot?start=start')]
         ])
         await self.bot.send_message(self.user_id, config.pesan_join, reply_to_message_id=self.message.id, reply_markup=markup)
 
