@@ -135,15 +135,17 @@ async def cb_help(client, callback_query):
     user_id = callback_query.from_user.id
     buttons = [
         [
+InlineKeyboardButton(
+                "ʙᴀᴄᴋ", callback_data="bck"
+            ),
             InlineKeyboardButton(
                 "ᴄʟᴏsᴇ", callback_data="ttp"
-            ),
-        ],
+            ),    
+  ],
     ]
     await callback_query.edit_message_text(
         f"""
  <b>silahkan kirim pesan anda menggunakan hashtag:</b> 
-
 • <code>#mba</code> [ untuk identitas perempuan]
 • <code>#mas</code> [ untuk identitas laki-laki ]
 • <code>#spill</code> [ untuk spill masalah ]
@@ -151,13 +153,13 @@ async def cb_help(client, callback_query):
 • <code>#story</code> [ untuk berbagi cerita/curhat ]
 • <code>#pap</code> [ khusus media foto/video ] 
 
-<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk </code>
+<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk</code>
 
-<b>Note:</b> Pastikan pesanmu lebih dari 3 kata.
+<b>Pastikan lebih dari 3 kata</b>
 """,
         disable_web_page_preview=True,
-        reply_markup=InlineKeyboardMarkup(buttons),
-    )
+     reply_markup=InlineKeyboardMarkup(buttons),
+)
 
 
 async def cb_close(client, callback_query):
@@ -167,7 +169,8 @@ async def help_handler(client, msg):
     db = Database(msg.from_user.id)
     member = db.get_data_pelanggan()
 
-    pesan = "Supported commands\n" + '/status — melihat status\n'       
+    pesan = "Supported commands\n" + '/status — melihat status\n'    
+    pesan += '/tf_coin — transfer coin\n'
 
     if member.status == 'admin':
         pesan += '\nHanya Admin\n'
@@ -186,7 +189,7 @@ async def help_handler(client, msg):
         pesan += '/list_ban — melihat list banned\n'
         pesan += '/stats — melihat statistik bot\n'
         pesan += '/bot — setbot (on|off)\n'
-        
+
         pesan += '\n=====BROADCAST OWNER=====\n'
         pesan += '/broadcast — mengirim pesan broadcast kesemua user\n'
         pesan += '/admin — menambahkan admin baru\n'
@@ -204,6 +207,7 @@ async def topup_handler(client: Client, msg: types.Message):
     keyboard = [
         [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
     ]
+    reply_markup = InlineKeyboardMarkup(keyboard)    
     reply_markup = InlineKeyboardMarkup(keyboard)
     pesan = 'Jawafess coin di gunakan untuk biaya mengirim menfess ke @JAWAFES jika batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
     pesan += f'coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 coin = 1000 rupiah</b>\n\n'
@@ -214,7 +218,7 @@ async def topup_handler(client: Client, msg: types.Message):
     pesan += f'├4. kirimkan bukti pembayaran beserta kode topup\n'
     pesan += f'└ <b>BENEFIT TOPUP COIN JAWAFESS:</b> bisa kirim menfess sebanyak-banyaknya diluar batasan harian\n\n'
     pesan += f'<b>CATATAN:</b> apabila batas kirim harian belum habis. coin tidak akan berkurang'
- 
+
     await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
 async def cb_hapus(client, callback_query):
@@ -233,10 +237,32 @@ async def cb_hapus(client, callback_query):
 <b>❏Jika anda sudah memiliki coin, silahkan ketikkan salah satu code transfer dibawah ini:</b>
 ├<code>/tf_coin 1020381855 25</code>
 ├<code>/tf_coin 5422684990 25</code>
-├ <code>/tf_coin 1717010997 25</code>
+├<code>/tf_coin 1717010997 25</code>
 └<code>/tf_coin 6188825810 25</code>
 
 <b>Jika sudah, salin code transfer dan bukti transfer coin anda lalu pergi ke button hapus dibawah ini</b>
+""",
+        disable_web_page_preview=True,
+     reply_markup=InlineKeyboardMarkup(buttons),
+)
+
+async def cb_back(client, callback_query):
+    user_id = callback_query.from_user.id
+    buttons = [
+       [
+       InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
+            ),
+            InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+ ),          
+        ],
+    ]
+    await callback_query.edit_message_text(
+        f"""
+𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
+
+<b>silahkan baca help dan rules terlebih dahulu</b>
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
