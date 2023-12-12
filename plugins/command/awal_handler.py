@@ -151,7 +151,7 @@ InlineKeyboardButton(
 
 <b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk</code>
 
-<b>Pastikan pesanmu lebih dari 3 kata</b>
+<b>Pastikan pesanmu lebih dari 3 kata, ya</b>
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
