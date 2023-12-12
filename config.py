@@ -30,7 +30,7 @@ start_msg = os.environ.get("START_MSG", """
 
 <b>𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel</b> @JAWAFES.
 
-<b>silahkan baca help dan rules terlebih dahulu</b>""")
+<b>silahkan baca rules dan help terlebih dahulu</b>""")
 # =========================================================== #
 
 gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
