@@ -198,7 +198,7 @@ async def topup_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
     keyboard = [
-        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/topupcoinbot?start=start")],
+        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/GJNadminbot?start=start")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)    
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -219,7 +219,7 @@ async def cb_hapus(client, callback_query):
     buttons = [
         [
         InlineKeyboardButton(
-                "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", url="https://t.me/GJN_adminbot?start=start"
+                "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", url="https://t.me/GJNadminbot?start=start"
  ),          
         ],
 [      InlineKeyboardButton(
