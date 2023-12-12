@@ -19,12 +19,12 @@ async def start_handler(client: Client, msg: types.Message):
     )
     mention = msg.from_user.mention
     buttons = [
-        [           
-            InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
+        [                       
             InlineKeyboardButton(
                 "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+            ),
+InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
             ),
         ],
     ]
