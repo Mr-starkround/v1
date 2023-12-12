@@ -24,17 +24,17 @@ biaya_kirim = int(os.environ.get("BIAYA_KIRIM", "25"))
 hastag = os.environ.get("HASTAG", "#pft #pftt #mas #mba #story #spill #story #pap").replace(" ", "|").lower()
 # =========================================================== #
 
-pesan_join = os.environ.get("PESAN_JOIN", "Kamu harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel @JAWAFES. \n\nSilakan Join Ke Channel & Group dulu ⤵️")
+pesan_join = os.environ.get("PESAN_JOIN", "<b>Hallo</b>{mention}\n\n<b>Kamu harus bergabung di Channel & Group terlebih dahulu untuk mengirim pesan ke channel</b> @JAWAFES. \n\n<b>Silakan Join Channel dan Group dulu ⤵️</b>")
 start_msg = os.environ.get("START_MSG", """
-❏ Haii {mention}
+<b>❏ Hallo</b> {mention}
 
-𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
+<b>𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel</b> @JAWAFES.
 
 <b>silahkan baca help dan rules terlebih dahulu</b>""")
 # =========================================================== #
 
 gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
-{mention}Pesan anda gagal terkirim. <b>silahkan klik button help bila butuh bantuan</b>
+<b>Maaf</b> {mention},\n\n<b>Pesan anda gagal terkirim.\nsilahkan klik button help jika anda butuh bantuan</b>
 """)
 # =========================================================== #
 
