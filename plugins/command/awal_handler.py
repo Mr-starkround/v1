@@ -105,10 +105,10 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
     buttons = [
         [
             InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
             ),
             InlineKeyboardButton(
-                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+                "ʜᴇʟᴘ", callback_data="nsj"
             ),
         ],
     ]
@@ -222,7 +222,11 @@ async def cb_hapus(client, callback_query):
                 "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", url="https://t.me/GJN_adminbot?start=start"
  ),          
         ],
-    ]
+[      InlineKeyboardButton(
+                "ʙᴀᴄᴋ", callback_data="bck"
+            ),
+    ],
+]
     await callback_query.edit_message_text(
         f"""
 <b>Biaya menghapus postingan adalah 25 coin. Jika anda belum memiliki coin silahkan pergi ke menu top up.</b>
@@ -243,12 +247,12 @@ async def cb_back(client, callback_query):
     user_id = callback_query.from_user.id
     buttons = [
        [
-       InlineKeyboardButton(
-                "ʜᴇʟᴘ", callback_data="nsj"
-            ),
             InlineKeyboardButton(
                 "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
  ),          
+      InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
+            ),
         ],
     ]
     await callback_query.edit_message_text(
