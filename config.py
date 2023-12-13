@@ -21,7 +21,7 @@ batas_kirim = int(os.environ.get("BATAS_KIRIM", "5"))
 biaya_kirim = int(os.environ.get("BIAYA_KIRIM", "25"))
 # =========================================================== #
 
-hastag = os.environ.get("HASTAG", "#pft #pftt #mas #mba #story #spill #story #pap").replace(" ", "|").lower()
+hastag = os.environ.get("HASTAG", "#pfrtddtzt #pfttzz #mas #mba #story #spill #tanya #pap").replace(" ", "|").lower()
 # =========================================================== #
 start_msg = os.environ.get("START_MSG", """
 ❏ Hallo {mention}
