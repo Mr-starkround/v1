@@ -252,7 +252,7 @@ async def cb_hapus(client, callback_query):
  ),          
         ],
 [      InlineKeyboardButton(
-                "ʙᴀᴄᴋ", callback_data="bck"
+                "ʙᴀᴄᴋ", callback_data="peler"
             ),
     ],
 ]
@@ -337,29 +337,34 @@ coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 
 
 async def cb_peler(client, callback_query):
     user_id = callback_query.from_user.id
+    mention = callback_query.from_user.mention
+    username = (
+        f'@{callback_query.from_user.username}'
+        if callback_query.from_user.username
+        else '@vxnjul'
+  )
     buttons = [
-        [
-        InlineKeyboardButton(
-                "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", url="https://t.me/GJNadminbot?start=start"
- ),          
-        ],
-[      InlineKeyboardButton(
-                "ʙᴀᴄᴋ", callback_data="bck"
+       [ InlineKeyboardButton(
+                "ʜᴇʟᴘ", callback_data="nsj"
             ),
-    ],
-]
+            InlineKeyboardButton(
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/9"
+ ),          
+      ],
+[           InlineKeyboardButton(
+                "🗑ʜᴀᴘᴜs", callback_data="hps"
+            ),    
+  ],
+       ]
     await callback_query.edit_message_text(
         f"""
-<b>Biaya menghapus postingan adalah 25 coin. Jika anda belum memiliki coin silahkan pergi ke menu top up.</b>
+❏ Haii {mention}
 
-<b>❏Jika anda sudah memiliki coin, silahkan ketikkan salah satu code transfer dibawah ini:</b>
-├<code>/tf_coin 1020381855 25</code>
-├<code>/tf_coin 5422684990 25</code>
-├<code>/tf_coin 1717010997 25</code>
-└<code>/tf_coin 6188825810 25</code>
+𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
 
-<b>Jika sudah, salin code transfer dan bukti transfer coin anda lalu pergi ke button hapus dibawah ini</b>
+silahkan baca help dan rules terlebih dahulu.
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
 )
+
