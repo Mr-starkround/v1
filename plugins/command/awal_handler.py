@@ -254,7 +254,12 @@ async def cb_back(client, callback_query):
                 "ʜᴇʟᴘ", callback_data="nsj"
             ),
         ],
-    ]
+  [
+        InlineKeyboardButton(
+                "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", url="https://t.me/GJNadminbot?start=start"
+ ),                
+    ],
+  ]
     await callback_query.edit_message_text(
         f"""
 𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
