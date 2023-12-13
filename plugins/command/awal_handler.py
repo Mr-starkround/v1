@@ -116,7 +116,7 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
             ),
         ],
   [InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="ttp"
+                "ᴄʟᴏsᴇ", callback_data="tutup"
             ),    
       ],
   ]
@@ -142,7 +142,7 @@ InlineKeyboardButton(
                 "ʙᴀᴄᴋ", callback_data="bck"
             ),
             InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="ttp"
+                "ᴄʟᴏsᴇ", callback_data="tutup"
             ),    
   ],
     ]
@@ -207,7 +207,7 @@ async def topup_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
     keyboard = [
-        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", url="https://t.me/GJNadminbot?start=start")],
+        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", url="https://telegra.ph//file/edae2f8b4a1453b8a6e52.jpg")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)        
     pesan = 'Jawafess coin di gunakan untuk biaya mengirim menfess ke @JAWAFES jika batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
