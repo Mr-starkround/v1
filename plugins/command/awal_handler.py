@@ -334,3 +334,32 @@ coin akan berkurang secara otomatis jika batas harian sudah habis. <b>harga 100 
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
 )
+
+async def cb_peler(client, callback_query):
+    user_id = callback_query.from_user.id
+    buttons = [
+        [
+        InlineKeyboardButton(
+                "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", url="https://t.me/GJNadminbot?start=start"
+ ),          
+        ],
+[      InlineKeyboardButton(
+                "ʙᴀᴄᴋ", callback_data="bck"
+            ),
+    ],
+]
+    await callback_query.edit_message_text(
+        f"""
+<b>Biaya menghapus postingan adalah 25 coin. Jika anda belum memiliki coin silahkan pergi ke menu top up.</b>
+
+<b>❏Jika anda sudah memiliki coin, silahkan ketikkan salah satu code transfer dibawah ini:</b>
+├<code>/tf_coin 1020381855 25</code>
+├<code>/tf_coin 5422684990 25</code>
+├<code>/tf_coin 1717010997 25</code>
+└<code>/tf_coin 6188825810 25</code>
+
+<b>Jika sudah, salin code transfer dan bukti transfer coin anda lalu pergi ke button hapus dibawah ini</b>
+""",
+        disable_web_page_preview=True,
+     reply_markup=InlineKeyboardMarkup(buttons),
+)
