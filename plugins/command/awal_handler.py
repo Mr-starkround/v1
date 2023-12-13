@@ -111,7 +111,11 @@ async def gagal_kirim_handler(client: Client, msg: types.Message):
                 "ʜᴇʟᴘ", callback_data="nsj"
             ),
         ],
-    ]
+  [InlineKeyboardButton(
+                "ᴄʟᴏsᴇ", callback_data="ttp"
+            ),    
+      ],
+  ]
     await msg.reply_text(
         text=config.gagalkirim_msg.format(
             id=msg.from_user.id,
