@@ -24,11 +24,11 @@ biaya_kirim = int(os.environ.get("BIAYA_KIRIM", "25"))
 hastag = os.environ.get("HASTAG", "#pft #pftt #mas #mba #story #spill #story #pap").replace(" ", "|").lower()
 # =========================================================== #
 start_msg = os.environ.get("START_MSG", """
-<b>❏ Hallo</b> {mention}
+❏ Hallo {mention}
 
-<b>𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel</b> @JAWAFES.
+𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
 
-<b>silahkan baca rules dan help terlebih dahulu</b>""")
+silahkan baca help dan rules terlebih dahulu""")
 # =========================================================== #
 
 gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
