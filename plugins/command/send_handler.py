@@ -1,6 +1,6 @@
 import config
 import re
- 
+
 from pyrogram import Client, types, enums
 from plugins import Database, Helper
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -35,16 +35,12 @@ async def send_with_pic_handler(client: Client, msg: types.Message, key: str, ha
         await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", True, enums.ParseMode.HTML, reply_markup=reply_markup)
     else:
         await msg.reply('media yang didukung photo, video dan voice')
-   
-async def send_menfess_handler(client: Client, msg: types.Message):
+
+async def send_menfess_handler(client: Client, msg: types.Message, link: str = None):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
-    keyboard = [
- [InlineKeyboardButton(                "👀ʟɪʜᴀᴛ", url=f'https://t.me/jawafes'),       InlineKeyboardButton(                "🗑ʜᴀᴘᴜs", callback_data="hps")],
-]
-    reply_markup = InlineKeyboardMarkup(keyboard)
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
@@ -66,11 +62,27 @@ async def send_menfess_handler(client: Client, msg: types.Message):
                 else:
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
-        link = await get_link()              
+        link = await get_link()
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
+
+        buttons = [
+            [
+                InlineKeyboardButton(
+                    f"👀ʟɪʜᴀᴛ",
+                url=link + str(kirim.id),
+                ),
+                InlineKeyboardButton(
+                    "🗑ʜᴀᴘᴜs",
+                    callback_data="hps")
+            ],
+        ]
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
         await db.update_menfess(coin, menfess, all_menfess)
-        await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi", True, enums.ParseMode.HTML, reply_markup=reply_markup)
+        await msg.reply(f"pesan telah berhasil terkirim. hari ini kamu telah mengirim menfess sebanyak {menfess + 1}/{config.batas_kirim} . kamu dapat mengirim menfess sebanyak {config.batas_kirim} kali dalam sehari\n\nwaktu reset setiap jam 1 pagi\n<a href='{link + str(kirim.id)}'>check pesan kamu</a>",       
+
+       disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
+        quote=True
+ ),
     else:
         await msg.reply('media yang didukung photo, video dan voice')
 
