@@ -17,7 +17,7 @@ async def broadcast_handler(client: Client, msg: Message):
         anu = msg.reply_to_message
         anu = await anu.copy(msg.chat.id, reply_to_message_id=anu.id)
         markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton('Ya', 'ya_confirm'), InlineKeyboardButton('Tidak', 'tidak_confirm')]
+            [InlineKeyboardButton('Ya', 'ya_confirm'), InlineKeyboardButton('Tidak', 'ttp')]
         ])
         await anu.reply('apakah kamu akan mengirimkan pesan broadcast ?', True, reply_markup=markup)
 
