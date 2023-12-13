@@ -256,7 +256,7 @@ async def cb_back(client, callback_query):
         ],
   [
         InlineKeyboardButton(
-                "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", url="https://t.me/GJNadminbot?start=start"
+                "🗑ʜᴀᴘᴜs ᴘᴏsᴛɪɴɢᴀɴ", callback_data="hps"
  ),                
     ],
   ]
