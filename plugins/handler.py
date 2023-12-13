@@ -201,12 +201,16 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await photo_handler_inline(client, query)
     elif query.data == 'video':
         await video_handler_inline(client, query)
+    elif query.data == 'tpp':     
+        await cb_topup(client, query)  
     elif query.data == 'bck':
         await cb_back(client, query)
     elif query.data == 'hps':
         await cb_hapus(client, query)
     elif query.data == 'nsj':
-        await cb_help(client, query)   
+        await cb_help(client, query)
+    elif query.data == 'ttp':
+        await cb_close(client, query)
     elif query.data == 'voice':
         await voice_handler_inline(client, query)
     elif query.data == 'status_bot':
@@ -217,4 +221,4 @@ async def on_callback_query(client: Client, query: CallbackQuery):
     elif query.data == 'ya_confirm':
         await broadcast_ya(client, query)
     elif query.data == 'tutup':
-        await close_cbb(client, query)
+        await
