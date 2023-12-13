@@ -45,6 +45,10 @@ InlineKeyboardButton(
 async def status_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
+    keyboard = [
+        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", url="https://t.me/GJNadminbot?start=start")],
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)        
     pesan = '<b>❏ User Info:</b>\n'
     pesan += f'├<b>Nama :</b> {db.mention}\n'
     pesan += f'├<b>User ID :</b> <code>{db.id}</code>\n'
@@ -54,7 +58,7 @@ async def status_handler(client: Client, msg: types.Message):
     pesan += f'├<b>Menfess Harian :</b> {db.menfess}/{config.batas_kirim}\n'
     pesan += f'├<b>Semua Menfess :</b> {db.all_menfess}\n'
     pesan += f'└<b>Bergabung :</b> {db.sign_up}'
-    await msg.reply(pesan, True, enums.ParseMode.HTML)
+    await msg.reply(pesan, True, enums.ParseMode.HTML,reply_markup=reply_markup)
 
 async def statistik_handler(client: Helper, id_bot: int):
     db = Database(client.user_id)
@@ -203,7 +207,7 @@ async def topup_handler(client: Client, msg: types.Message):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id).get_data_pelanggan()
     keyboard = [
-        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ💰", url="https://t.me/GJNadminbot?start=start")],
+        [InlineKeyboardButton(                "ᴛᴏᴘ ᴜᴘ ᴄᴏɪɴ ᴊᴀᴡᴀꜰᴇꜱꜱ", url="https://t.me/GJNadminbot?start=start")],
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)        
     pesan = 'Jawafess coin di gunakan untuk biaya mengirim menfess ke @JAWAFES jika batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.\n\n'
