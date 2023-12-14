@@ -35,7 +35,7 @@ async def broadcast_ya(client: Client, query: CallbackQuery):
     dihapus = 0
     blokir = 0
     gagal = 0
-    await msg.edit('Broadcast sedang berlangsung, tunggu sebentar', reply_markup = None)
+    await msg.edit('<code>Broadcast sedang berlangsung, tunggu sebentar</code>', reply_markup = None)
     for user_id in user_ids:
         try:
             await message.copy(user_id)
