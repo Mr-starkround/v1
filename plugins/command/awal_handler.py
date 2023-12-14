@@ -320,7 +320,7 @@ async def cb_topup(client, callback_query):
 ]
     await callback_query.edit_message_text(
         f"""
-Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.
+Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika {config.batas_kirim}x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.
 
 ❏ Cara Membeli Coin Jawafess
 ├1. klik button top up dibawah ini
