@@ -71,11 +71,10 @@ async def status_handler(client: Client, msg: types.Message):
 async def statistik_handler(client: Helper, id_bot: int):
     db = Database(client.user_id)
     bot = db.get_data_bot(id_bot)
-    pesan = "<b>📊 STATISTIK BOT\n\n"
-    pesan += f"▪️Pelanggan: {db.get_pelanggan().total_pelanggan}\n"
-    pesan += f"▪️Admin: {len(bot.admin)}\n"
-    pesan += f"▪️Talent: {len(bot.talent)}\n"
-    pesan += f"▪️Banned: {len(bot.ban)}\n\n"
+    pesan = "<b>📊 STATISTIK\n\n"
+    pesan += f"Pelanggan: {db.get_pelanggan().total_pelanggan}\n"
+    pesan += f"Admin: {len(bot.admin)}\n"    
+    pesan += f"Banned: {len(bot.ban)}\n\n"
     pesan += f"🔰Status bot: {'AKTIF' if bot.bot_status else 'TIDAK AKTIF'}</b>"
     await client.message.reply_text(pesan, True, enums.ParseMode.HTML)
 
