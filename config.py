@@ -17,7 +17,7 @@ channel_log = int(os.environ.get("CHANNEL_LOG", "-1002015387015"))
 id_admin = int(os.environ.get("ID_ADMIN", "1020381855"))
 # =========================================================== #
 
-batas_kirim = int(os.environ.get("BATAS_KIRIM", "5"))
+batas_kirim = int(os.environ.get("BATAS_KIRIM", "3"))
 biaya_kirim = int(os.environ.get("BIAYA_KIRIM", "25"))
 # =========================================================== #
 
@@ -28,11 +28,11 @@ start_msg = os.environ.get("START_MSG", """
 
 𝗝𝗮𝘄𝗮𝗳𝗲𝘀𝘀 𝗔𝘂𝘁𝗼 𝗽𝗼𝘀𝘁 akan membantumu mengirimkan pesan secara anonim ke channel @JAWAFES.
 
-silahkan baca help dan rules terlebih dahulu""")
+silahkan baca help dan rules terlebih dahulu.""")
 # =========================================================== #
 
 gagalkirim_msg = os.environ.get("GAGAL_KIRIM", """
-<b>Maaf</b> {mention},\n\n<b>Pesan anda gagal terkirim.\nsilahkan klik button help jika anda butuh bantuan</b>
+pesan anda gagal terkirim. silahkan klik button help jika anda butuh bantuan.
 """)
 # =========================================================== #
 
