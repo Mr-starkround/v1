@@ -130,7 +130,7 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
                 try:
                     await client.send_message(target, f"Coin berhasil ditambahkan senilai {coin} coin, cek /status\n└Oleh <a href='tg://user?id={msg.from_user.id}'>{nama}</a>")
                     await user_db.transfer_coin(ditransfer, diterima, target_db.coin_full, int(target))
-                    await msg.reply(f'<i>berhasil transfer coin sebesar {coin} coin💰</i>', True)
+                    await msg.reply(f'<code>berhasil transfer coin sebesar {coin} coin💰</code>', True)
                 except Exception as e:
                     return await msg.reply_text(
                         text=f"❌<i>Terjadi kesalahan, sepertinya user memblokir bot</i>\n\n{e}", quote=True,
