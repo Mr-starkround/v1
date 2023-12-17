@@ -179,15 +179,15 @@ async def cb_help(client, callback_query):
         else '@vxnjul'
   )
     buttons = [
-        [
+        [InlineKeyboardButton(
+                "ʙᴀᴄᴋ", callback_data="bck"),
 InlineKeyboardButton(
-                "ʙᴀᴄᴋ", callback_data="bck"
-            ),
-            InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="tutup"
-            ),    
-  ],
-    ]
+                "ʀᴜʟᴇs", url="https://t.me/jawafes/28266"),
+        ],
+   [ InlineKeyboardButton(
+                "ᴄʟᴏsᴇ", callback_data="tutup"),
+   ],
+        ]
     await callback_query.edit_message_text(
         f"""
  <b>silahkan kirim pesan anda menggunakan hashtag:</b>
