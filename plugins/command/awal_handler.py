@@ -180,12 +180,9 @@ async def cb_help(client, callback_query):
   )
     buttons = [
         [InlineKeyboardButton(
-                "ʙᴀᴄᴋ", callback_data="bck"),
-InlineKeyboardButton(
                 "ʀᴜʟᴇs", url="https://t.me/jawafes/28266"),
-        ],
-   [ InlineKeyboardButton(
-                "ᴄʟᴏsᴇ", callback_data="tutup"),
+InlineKeyboardButton(
+                "ᴄʟᴏsᴇ", callback_data="tutup"),       
    ],
         ]
     await callback_query.edit_message_text(
@@ -199,9 +196,7 @@ InlineKeyboardButton(
 • <code>#story</code> [ untuk berbagi cerita/curhat ]
 • <code>#pap</code> [ khusus media foto/video ] 
 
-<b>Contoh pesan:</b> <code>#mas yang dari jogja. jalan yuk {username} </code>
-
-Pastikan pesanmu lebih dari 3 kata, ya
+<b>Contoh pesan:</b> <code>#mba gabut banget ayo callan {username} </code>
 """,
         disable_web_page_preview=True,
      reply_markup=InlineKeyboardMarkup(buttons),
