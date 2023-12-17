@@ -128,7 +128,7 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
                 nama = "Admin" if anu.status == 'owner' or anu.status == 'admin' else msg.from_user.first_name
                 nama = await helper.escapeHTML(nama)
                 try:
-                    await client.send_message(target, f"Coin berhasil ditambahkan senilai {coin} coin, cek /status\n└Oleh <a href='tg://user?id={msg.from_user.id}'>{nama}</a>")
+                    await client.send_message(target, f"❏ Coin berhasil ditambahkan senilai {coin} coin, cek /status\n└Oleh <a href='tg://user?id={msg.from_user.id}'>{nama}</a>")
                     await user_db.transfer_coin(ditransfer, diterima, target_db.coin_full, int(target))
                     await msg.reply(f'<code>berhasil transfer coin sebesar {coin} coin💰</code>', True)
                 except Exception as e:
