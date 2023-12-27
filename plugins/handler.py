@@ -211,8 +211,6 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await cb_hapus(client, query)
     elif query.data == 'nsj':
         await cb_help(client, query)
-    elif query.data == 'ttp':
-        await cb_close(client, query)
     elif query.data == 'voice':
         await voice_handler_inline(client, query)
     elif query.data == 'status_bot':
