@@ -17,7 +17,7 @@ channel_log = int(os.environ.get("CHANNEL_LOG", "-1002015387015"))
 id_admin = int(os.environ.get("ID_ADMIN", "1020381855"))
 # =========================================================== #
 
-batas_kirim = int(os.environ.get("BATAS_KIRIM", "3"))
+batas_kirim = int(os.environ.get("BATAS_KIRIM", "5"))
 biaya_kirim = int(os.environ.get("BIAYA_KIRIM", "25"))
 # =========================================================== #
 
@@ -37,7 +37,7 @@ pesan anda gagal terkirim. silahkan klik button help jika anda butuh bantuan.
 # =========================================================== #
 
 topup_msg = os.environ.get("PESAN_TOPUP", """
-Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 3x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.
+Jawafess coin di gunakan untuk biaya mengirim menfess/promote ke @JAWAFES jika 5x batas kirim harian sudah habis. biaya untuk sekali mengirim adalah 25 coin.
 
 ❏ Cara Membeli Coin Jawafess
 ├1. klik button top up dibawah ini
