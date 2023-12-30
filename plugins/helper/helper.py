@@ -41,6 +41,9 @@ class Helper():
             enums.ChatMemberStatus.ADMINISTRATOR
         ]
         return member.status in status
+            return False
+        else:
+            return True
 
     async def pesan_langganan(self):
         link_1 = await self.bot.export_chat_invite_link(config.channel_1)
