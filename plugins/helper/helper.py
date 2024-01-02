@@ -51,7 +51,7 @@ class Helper():
         mention = self.message.from_user.mention
         markup = InlineKeyboardMarkup([
             [InlineKeyboardButton('ɢʀᴏᴜᴘ ʙᴀsᴇ', url=link_2), InlineKeyboardButton('ᴄʜᴀɴɴᴇʟ ʙᴀsᴇ', url=link_1)],
-            [InlineKeyboardButton('ᴄᴏʙᴀ ʟᴀɢɪ', url='https://t.me/Jawafessbot?start=start')]
+            [InlineKeyboardButton('ᴄᴏʙᴀ ʟᴀɢɪ', url=f'https://t.me/{self.bot.username}?start=start')]
           ])
         _msg = f"""
         <b>Hallo {mention}</b>
