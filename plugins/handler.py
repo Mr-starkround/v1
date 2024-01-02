@@ -173,7 +173,7 @@ async def on_message(client: Client, msg: Message):
                         return await send_menfess_handler(client, msg, hastag)
                 else:
                 await send_menfess(client, msg)
-                else:
+                 else:
                 await gagal_kirim_handler(client, msg)
 
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
