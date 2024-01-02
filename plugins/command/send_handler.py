@@ -5,31 +5,25 @@ from pyrogram import Client, types, enums
 from plugins import Database, Helper
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-async def send_menfess(client: Client, msg: types.Message, key: str, hastag: list, link: str = None):
-    helper = Helper(client, msg)
+async def send_menfess(client: Client, msg: types.Message, key: str, hastag: list):
     db = Database(msg.from_user.id)
-    db_user = db.get_data_pelanggan()
-    db_bot = db.get_data_bot(client.id_bot).kirimchannel
-    if msg.text or msg.photo or msg.video or msg.voice:
-        if msg.photo and not db_bot.photo:
-            if db_user.status == 'member' or db_user.status == 'talent':
-                return await msg.reply('Tidak bisa mengirim photo, karena sedang dinonaktifkan oleh admin', True)
-        elif msg.video and not db_bot.video:
-            if db_user.status == 'member' or db_user.status == 'talent':
-                return await msg.reply('Tidak bisa mengirim video, karena sedang dinonaktifkan oleh admin', True)
-        elif msg.voice and not db_bot.voice:
-            if db_user.status == 'member' or db_user.status == 'talent':
-                return await msg.reply('Tidak bisa mengirim voice, karena sedang dinonaktifkan oleh admin', True)
+    helper = Helper(client, msg)
+    user = db.get_data_pelanggan()
 
-        menfess = db_user.menfess
-        all_menfess = db_user.all_menfess
-        coin = db_user.coin
-        if menfess >= config.batas_kirim:
-            if db_user.status == 'member' or db_user.status == 'talent':
-                if coin >= config.biaya_kirim:
-                    coin = db_user.coin - config.biaya_kirim
-                else:
-                    return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
+    if msg.text or msg.photo or msg.video or msg.voice:
+        menfess = user.menfess
+        all_menfess = user.all_menfess
+        coin = user.coin
+        if menfess >= config.batas_kirim and user.status in ['member', 'talent']:
+            if coin >= config.biaya_kirim:
+                coin = user.coin - config.biaya_kirim
+            else:
+                return await msg.reply(f'🙅🏻‍♀️ post gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali.serta coin mu kurang untuk mengirim menfess diluar batas harian., kamu dapat mengirim menfess kembali pada hari esok.\n\n waktu reset jam 1 pagi. \n\n\n\n Info: Topup Coin Hanya ke @OwnNeko', quote=True)
+
+        if key == hastag[0]:
+            picture = None
+        elif key == hastag[1]:
+            picture = None
 
         link = await get_link()
         # Use regular expression to check for links in the message
