@@ -175,8 +175,7 @@ async def on_message(client: Client, msg: Message):
                 await send_menfess(client, msg)
                 else:
                     await gagal_kirim_handler(client, msg)
-            else:
-                await gagal_kirim_handler(client, msg)
+
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
         command = msg.text or msg.caption
         if msg.from_user is None:
