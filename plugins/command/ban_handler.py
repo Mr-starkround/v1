@@ -44,7 +44,7 @@ async def ban_handler(client: Client, msg: types.Message):
 
     admin_mention = await get_user_mention(config.id_admin, client)  # Assign admin_mention before using it
     # Send notification to channel_1
-    notification_text = f"User <a href='tg://user?id={str(target)}'> {await get_user_mention(target, client)} </a> dengan Id: <code>{target}</code> sudah di banned. karena: {alasan}\n\noleh : <a href='tg://openmessage?user_id={str(config.id_admin)}'>{admin_mention}</a>"
+    notification_text = f"⚠️User <a href='tg://user?id={str(target)}'> {await get_user_mention(target, client)} sudah di banned. karena: {alasan}\n\noleh : <a href='tg://openmessage?user_id={str(config.id_admin)}'>{admin_mention}</a>"
     await client.send_message(config.channel_1, notification_text)
 
     return await msg.reply_text(
