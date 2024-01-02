@@ -63,9 +63,9 @@ async def send_menfess_handler(client: Client, msg: types.Message, hastag: list,
                     return await msg.reply(f'Pesanmu gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali. Coin mu kurang untuk mengirim menfess diluar batas harian. \n\nwaktu reset jam 1 pagi \n\nKamu dapat mengirim menfess kembali pada esok hari atau top up coin untuk mengirim diluar batas harianmu. \n\n<b>Topup Coin silahkan klik</b> /topup', True, enums.ParseMode.HTML)
 
         if key == hastag[0]:
-            picture = None
+            picture = db_bot
         elif key == hastag[1]:
-            picture = None
+            picture = db_bot
 
 
         link = await get_link()
