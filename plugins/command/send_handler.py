@@ -94,13 +94,12 @@ async def send_menfess_handler(client: Client, msg: types.Message, hastag: list,
         quote=True
  ),
 
-    try:
+    else:
         await msg.reply(f"Pesan anda <a href='{link + str(kirims.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi",       
 
        disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
- ),
-    else:
+ ),    
         return await msg.reply('media yang didukung photo, video dan voice')
 
 async def get_link():
