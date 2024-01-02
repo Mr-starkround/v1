@@ -5,7 +5,7 @@ from pyrogram import Client, types, enums
 from plugins import Database, Helper
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-async def send_menfess(client: Client, msg: types.Message, hastag: list, link: str = None):
+async def send_menfess(client: Client, msg: types.Message, link: str = None):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
