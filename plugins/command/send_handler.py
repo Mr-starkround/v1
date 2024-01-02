@@ -101,7 +101,7 @@ async def send_menfess_handler(client: Client, msg: types.Message, hastag: list,
         quote=True
  ),
     else:
-        await msg.reply('media yang didukung photo, video dan voice')
+        return await msg.reply('media yang didukung photo, video dan voice')
 
 async def get_link():
     anu = str(config.channel_1).split('-100')[1]
