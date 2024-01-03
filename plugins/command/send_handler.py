@@ -140,10 +140,6 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
 
 async def hapus_menf(client: Client, query: CallbackQuery):
 
-    helper = Helper(client, msg)
-    db = Database(msg.from_user.id)
-    db_user = db.get_data_pelanggan()
-    db_bot = db.get_data_bot(client.id_bot).kirimchannel 
             if x := re.search(fr"(?:^|\s)({config.hastag})"):
                 hastag = config.hastag.split('|')
                 if x[1] in [hastag[0], hastag[1]]:                
@@ -154,7 +150,7 @@ async def hapus_menf(client: Client, query: CallbackQuery):
         if menfess >= config.batas_kirim:
             if db_user.status == 'member' :
                 if coin >= config.biaya_hapus:
-                    coin = db_user.coin - config.biaya_hapus
+                    coin = db_user.coin - config.biaya_hapus           
                 else:    
        return await query.message.delete(coin, str (kirim.id))
     
