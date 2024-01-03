@@ -58,7 +58,7 @@ async def send_menfess_handler(client: Client, msg: Message, key: str, hastag: l
 
 
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
-        hapus = await helper.delete_message(str (kirim.id))
+        hapus = await client.delete_messages(msg.chat.id, msg.id)
 
         buttons = [
             [
