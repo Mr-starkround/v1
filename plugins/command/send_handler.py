@@ -137,3 +137,17 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
                 )
         else:
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True) 
+async def hapus_menf(client: Client, query: CallbackQuery):
+helper = Helper(client, msg)
+    db = Database(msg.from_user.id)
+    db_user = db.get_data_pelanggan()
+    db_bot = db.get_data_bot(client.id_bot).kirimchannel
+     link = await get_link()
+    try:
+        await query.message.reply_to_message.delete()
+    except:
+        pass
+    try:
+        await query.message.delete()
+    except:
+        pass
