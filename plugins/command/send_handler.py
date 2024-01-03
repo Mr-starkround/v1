@@ -152,7 +152,7 @@ async def hapus_menf(client: Client, query: CallbackQuery):
                 if coin >= config.biaya_hapus:
                     coin = db_user.coin - config.biaya_hapus           
                 else:    
-       return await query.message.delete(coin, str (kirim.id), client_id.bot)
+       return await query.message.delete(coin, str (kirim.id), client.id_bot)
     
     try:
         await query.message.reply_to_message.delete()
