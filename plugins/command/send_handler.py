@@ -138,7 +138,7 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
         else:
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True) 
 
-async def hapus_menf(client: Client, query: CallbackQuery):
+async def hapus_menf(client: Client, msg: Message, query: CallbackQuery):
 
             if x := re.search(fr"(?:^|\s)({config.hastag})", msg.text or msg.caption):
                 hastag = config.hastag.split('|')
