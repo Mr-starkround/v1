@@ -228,3 +228,5 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await close_cbb(client, query)
     elif query.data == 'kirim':
         await send_menfess_handler(client, query)
+    elif query.data == 'hapus':     
+        await hapus_menf(client, query)  
