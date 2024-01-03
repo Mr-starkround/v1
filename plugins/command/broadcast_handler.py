@@ -84,5 +84,5 @@ async def menfess_handler(client: Client, msg: Message):
         markup = InlineKeyboardMarkup([
             [InlineKeyboardButton('Ya', 'kirim'), InlineKeyboardButton('Tidak', 'ttp')]
         ])
-        await anu.reply('apakah kamu akan mengirimkan pesan broadcast ?', True, reply_markup=markup)
+        await anu.reply('apakah kamu yakin akan mengirimkan pesan ini?', True, reply_markup=markup)
 
