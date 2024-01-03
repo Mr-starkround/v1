@@ -6,7 +6,7 @@ from plugins import Database, Helper
 from pyrogram.types import (
     Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 )
-async def send_menfess(client: Client, query: Callbackquery):
+async def send_menfess(client: Client, query: CallbackQuery):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
     user = db.get_data_pelanggan()
@@ -56,7 +56,7 @@ async def send_menfess(client: Client, query: Callbackquery):
     else:
         await msg.reply('media yang didukung photo, video dan voice')
 
-async def send_menfess_handler(client: Client, query: Callbackquery):
+async def send_menfess_handler(client: Client, query: CallbackQuery):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
