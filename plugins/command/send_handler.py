@@ -143,11 +143,13 @@ async def hapus_menf(client: Client, query: CallbackQuery):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
-    db_bot = db.get_data_bot(client.id_bot).kirimchannel
-     link = await get_link()
+    db_bot = db.get_data_bot(client.id_bot).kirimchannel     
 
     text = f"""<b>yakin ingin hapus menfes?</b>""" 
-     await db_bot.delete(str (kirim.id))
+
+     link = await get_link()
+
+     await db_bot.delete(text, str (kirim.id))
     
     try:
         await query.message.reply_to_message.delete()
