@@ -153,22 +153,7 @@ async def on_message(client: Client, msg: Message):
                 member = database.get_data_pelanggan()
                 if member.status == 'banned':
                     return await msg.reply(f'⛔️Akun anda tidak dapat mengirim menfess karena telah di banned oleh <b>Admin</b>\nJika anda merasa itu sebuah kesalahan, silahkan hubungi @vxnjul.', True, enums.ParseMode.HTML)
-                if key in [hastag[0], hastag [1]]:
-                    return (
-                        await msg.reply(
-                            '🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>',
-                            True,
-                            enums.ParseMode.HTML,
-                        )
-                        if key == command.lower()
-                        or len(command.split(' ')) < 3:
-                                            else:
-                        return await send_menfess_handler(client, msg)
-                else:
-                    await gagal_kirim_handler(client, msg)
-            else:
-                await gagal_kirim_handler(client, msg)
-                elif key in hastag:
+                if key in hastag:
                     if key == command.lower() or len(command.split(' ')) < 3:
                         return await msg.reply('⚠️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>', True, enums.ParseMode.HTML)
                     else:
