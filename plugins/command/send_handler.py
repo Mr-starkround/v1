@@ -6,6 +6,17 @@ from plugins import Database, Helper
 from pyrogram.types import (
     Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 )
+
+async def menfess_handler(client: Client, msg: Message):  
+    user_db = Database(msg.from_user.id)
+    helper = Helper(client, msg)
+    user = db.get_data_pelanggan()  
+        anu = await user_db.copy()
+        markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton('Ya', 'kirim'), InlineKeyboardButton('Tidak', 'ttp')]
+        ])
+        await anu.reply('apakah kamu yakin akan mengirimkan pesan ini?', True, reply_markup=markup)
+
 async def send_menfess(client: Client, query: CallbackQuery):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
