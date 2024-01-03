@@ -147,8 +147,6 @@ async def hapus_menf(client: Client, query: CallbackQuery):
 
     text = f"""<b>yakin ingin hapus menfes?</b>""" 
 
-     link = await get_link()
-
      await db_bot.delete(text, str (kirim.id))
     
     try:
