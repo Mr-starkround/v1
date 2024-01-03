@@ -47,8 +47,7 @@ async def send_menfess_handler(client: Client, msg: Message, key: str, hastag: l
             for entity in msg.entities:
                 if entity.type == "mention":
                     mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
-                    # If the mentioned username is not the sender's username, reject the message
-              username = msg.from_user_username
+                    # If the mentioned username is not the sender's username, reject the message             
                if not username in msg.text.lower():
                         return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
 
