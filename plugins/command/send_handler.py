@@ -67,7 +67,7 @@ async def send_menfess_handler(client: Client, msg: Message, key: str, hastag: l
                 ),
                 InlineKeyboardButton(
                     "🗑ʜᴀᴘᴜs",
-                    callback_data="hps")
+                    callback_data="hapus")
             ],
         ]
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
