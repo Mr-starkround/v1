@@ -18,21 +18,6 @@ async def send_menfess_handler(client: Client, msg: Message, key: str, hastag: l
     db_user = db.get_data_pelanggan()
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
 
-   # Check if the sender has a username
-    if msg.from_user.username is None:
-        return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', quote=True)
-
-    # Check if the message mentions the sender's username
-    username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
-    if not username and username in msg.text.lower():
-        return await msg.reply('⚠️Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
-
-        # Use regular expression to check for links in the message
-        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
-            return await msg.reply(f"Tidak diizinkan mengirimkan tautan.", quote=True)
-
-
-
     if msg.text or msg.photo or msg.video or msg.voice:
         if msg.photo and not db_bot.photo:
             if db_user.status == 'member' or db_user.status == 'talent':
@@ -56,6 +41,18 @@ async def send_menfess_handler(client: Client, msg: Message, key: str, hastag: l
 
         link = await get_link()
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
+   # Check if the sender has a username
+    if msg.from_user.username is None:
+        return await msg.reply('Anda harus memiliki username untuk mengirim menfess.', quote=True)
+
+    # Check if the message mentions the sender's username
+    username = f"@{msg.from_user.username}".lower() if msg.from_user.username else None
+    if not username and username in msg.text.lower():
+        return await msg.reply('⚠️Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
+
+        # Use regular expression to check for links in the message
+        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
+            return await msg.reply(f"Tidak diizinkan mengirimkan tautan.", quote=True)
 
         buttons = [
             [
