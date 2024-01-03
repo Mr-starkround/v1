@@ -142,12 +142,10 @@ async def hapus_menf(client: Client, msg: Message, query: CallbackQuery):
 
             if x := re.search(fr"(?:^|\s)({config.hastag})", msg.text or msg.caption):
                 hastag = config.hastag.split('|')
-                if x[1] in [hastag[0], hastag[1]]:                
-    
-         await query.message.delete(str (kirim.id), client.id_bot)
+                if x[1] in [hastag[0], hastag[1]]:                    
     
     try:
-        await query.message.reply_to_message.delete()
+        await query.message.reply_to_message.delete(str (kirim.id), client.id_bot)
     except:
         pass
     try:
