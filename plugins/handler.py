@@ -163,7 +163,7 @@ async def on_message(client: Client, msg: Message):
                         if key == command.lower()
                         or len(command.split(' ')) < 3
                         else await menfess_handler(
-                            client, msg
+                            client, msg, key, hastag
                         )
                     )
                 elif key in hastag:
@@ -172,7 +172,7 @@ async def on_message(client: Client, msg: Message):
                     else:
                         return await menfess_handler(client, msg)
                 else:
-                    await gagal_kirim_handler(client, msg, hastag)
+                    await gagal_kirim_handler(client, msg)
             else:
                 await gagal_kirim_handler(client, msg)
     elif msg.chat.type == enums.ChatType.SUPERGROUP:
