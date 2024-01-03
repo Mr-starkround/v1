@@ -77,7 +77,7 @@ async def close_cbb(client: Client, query: CallbackQuery):
 
 async def menfess_handler(client: Client, msg: Message):    
         anu = msg.from_user_id
-        anu = await anu.copy(msg.chat.id, )
+        anu = await anu.copy(msg.chat.id, msg.id )
         markup = InlineKeyboardMarkup([
             [InlineKeyboardButton('Ya', 'kirim'), InlineKeyboardButton('Tidak', 'ttp')]
         ])
