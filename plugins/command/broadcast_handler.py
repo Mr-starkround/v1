@@ -1,4 +1,6 @@
 import asyncio
+import config
+import re
 
 from pyrogram import Client
 from pyrogram.types import (
@@ -74,8 +76,8 @@ async def close_cbb(client: Client, query: CallbackQuery):
         pass
 
 async def menfess_handler(client: Client, msg: Message):    
-        anu = msg.reply_to_message
-        anu = await anu.copy(msg.chat.id, reply_to_message_id=anu.id)
+        anu = msg.from_user_id
+        anu = await anu.copy(msg.chat.id, )
         markup = InlineKeyboardMarkup([
             [InlineKeyboardButton('Ya', 'kirim'), InlineKeyboardButton('Tidak', 'ttp')]
         ])
