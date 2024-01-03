@@ -143,11 +143,17 @@ async def hapus_menf(client: Client, query: CallbackQuery):
     helper = Helper(client, msg)
     db = Database(msg.from_user.id)
     db_user = db.get_data_pelanggan()
-    db_bot = db.get_data_bot(client.id_bot).kirimchannel     
+    db_bot = db.get_data_bot(client.id_bot).kirimchannel 
 
-    text = f"""<b>yakin ingin hapus menfes?</b>""" 
-
-     await query.message.delete(text, str (kirim.id))
+        menfess = db_user.menfess
+        all_menfess = db_user.all_menfess
+        coin = db_user.coin
+        if menfess >= config.batas_kirim:
+            if db_user.status == 'member' :
+                if coin >= config.biaya_hapus:
+                    coin = db_user.coin - config.biaya_hapus
+                else:    
+       return await query.message.delete(coin, str (kirim.id))
     
     try:
         await query.message.reply_to_message.delete()
