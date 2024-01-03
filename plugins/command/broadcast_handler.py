@@ -79,7 +79,7 @@ async def menfess_handler(client: Client, msg: Message):
     user_db = Database(msg.from_user.id)
     helper = Helper(client, msg)
     user = db.get_data_pelanggan()  
-        anu = await user_db.copy(msg.chat.id, msg.id )
+        anu = await user_db.copy()
         markup = InlineKeyboardMarkup([
             [InlineKeyboardButton('Ya', 'kirim'), InlineKeyboardButton('Tidak', 'ttp')]
         ])
