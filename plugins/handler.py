@@ -182,9 +182,7 @@ async def on_message(client: Client, msg: Message):
 
 async def hapus_menf(client: Client, msg: Message, query: CallbackQuery):
 
-              uid = msg.from_user.id
-        helper = Helper(client, msg)
-        database = Database(uid)
+         uid = msg.from_user.id
         
         if msg.from_user is None:
             return
