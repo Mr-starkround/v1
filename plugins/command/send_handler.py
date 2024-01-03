@@ -148,8 +148,7 @@ async def hapus_menf(client: Client, query: CallbackQuery):
     text = f"""<b>yakin ingin hapus menfes?</b>""" 
 
      await query.message.delete(text, str (kirim.id))
-    except:
-        pass
+    
     try:
         await query.message.reply_to_message.delete()
     except:
