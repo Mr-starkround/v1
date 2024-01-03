@@ -48,7 +48,7 @@ async def send_menfess_handler(client: Client, msg: Message, key: str, hastag: l
                 if entity.type == "mention":
                     mentioned_username = msg.text[entity.offset:entity.offset + entity.length].lower()
                     # If the mentioned username is not the sender's username, reject the message
-                    if mentioned_username != username:
+                    if mentioned_username in db_user != username:
                         return await msg.reply('Anda hanya dapat mengirim menfess dengan menggunakan username Anda sendiri.', quote=True)
 
         # Use regular expression to check for links in the message
