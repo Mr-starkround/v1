@@ -7,7 +7,7 @@ from pyrogram.types import (
     Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 )
 
-async def menfess_handler(client: Client, msg: Message):
+async def menfess_handler(client: Client, msg: Message, key: str, hastag: list):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
     user = db.get_data_pelanggan()
