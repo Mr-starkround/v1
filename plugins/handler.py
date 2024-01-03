@@ -153,11 +153,24 @@ async def on_message(client: Client, msg: Message):
                 member = database.get_data_pelanggan()
                 if member.status == 'banned':
                     return await msg.reply(f'⛔️Akun anda tidak dapat mengirim menfess karena telah di banned oleh <b>Admin</b>\nJika anda merasa itu sebuah kesalahan, silahkan hubungi @vxnjul.', True, enums.ParseMode.HTML)
-                if key in hastag:
+                if key in [hastag[0], hastag [1]]:
+                    return (
+                        await msg.reply(
+                            '🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>',
+                            True,
+                            enums.ParseMode.HTML,
+                        )
+                        if key == command.lower()
+                        or len(command.split(' ')) < 3
+                        else await send_menfess_handler(
+                            client, msg, key, hastag
+                        )
+                    )
+                elif key in hastag:
                     if key == command.lower() or len(command.split(' ')) < 3:
-                        return await msg.reply('⚠️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>', True, enums.ParseMode.HTML)
+                        return await msg.reply('🙅🏻‍♀️  post gagal terkirim, <b>mengirim pesan wajib lebih dari 3 kata.</b>', True, enums.ParseMode.HTML)
                     else:
-                        return await send_menfess_handler(client, msg, key, hastag)
+                        return await send_menfess_handler(client, msg)
                 else:
                     await gagal_kirim_handler(client, msg)
             else:
@@ -170,7 +183,7 @@ async def on_message(client: Client, msg: Message):
 
             if x := re.search(fr"(?:^|\s)({config.hastag})", command.lower()):
                 hastag = config.hastag.split('|')
-                if x[1]:
+                if x[1] in [hastag[0], hastag[1]]:
                     try:
                         await client.delete_messages(msg.chat.id, msg.id)
                     except:
@@ -209,7 +222,3 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await broadcast_ya(client, query)
     elif query.data == 'tutup':
         await close_cbb(client, query)
-    elif query.data == 'kirim':
-        await send_menfess_handler(client, query)
-    elif query.data == 'hapus':     
-        await hapus_menf(client, query)  
