@@ -5,7 +5,7 @@ from pyrogram import Client, types, enums
 from plugins import Database, Helper
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-async def menfess_handler(client: Client, msg: Message):    
+async def menfess_handler(client: Client, msg: type:Message):    
         anu = msg.reply_to_message
         anu = await anu.copy(msg.chat.id, reply_to_message_id=anu.id)
         markup = InlineKeyboardMarkup([
