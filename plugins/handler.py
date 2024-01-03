@@ -181,6 +181,8 @@ async def on_message(client: Client, msg: Message):
             return
 
 async def hapus_menf(client: Client, msg: Message, query: CallbackQuery):
+    if msg.chat.type == enums.ChatType.PRIVATE:
+        
      command = msg.text or msg.caption        
             if msg.sender_chat.id != config.channel_1:
                 return
