@@ -144,7 +144,7 @@ helper = Helper(client, msg)
     db_bot = db.get_data_bot(client.id_bot).kirimchannel
      link = await get_link()
 
-    text = f"""<b>yakin ingin hapus menfes?</b>    
+    text = f"""<b>yakin ingin hapus menfes?</b>""" 
      await db_bot.delete(str (kirim.id))
     
     try:
