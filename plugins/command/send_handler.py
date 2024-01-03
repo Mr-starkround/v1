@@ -140,7 +140,7 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
 
 async def hapus_menf(client: Client, query: CallbackQuery):
 
-            if x := re.search(fr"(?:^|\s)({config.hastag})"):
+            if x := re.search(fr"(?:^|\s)({config.hastag})", mdg.text or msg.caption):
                 hastag = config.hastag.split('|')
                 if x[1] in [hastag[0], hastag[1]]:                
 
@@ -152,7 +152,7 @@ async def hapus_menf(client: Client, query: CallbackQuery):
                 if coin >= config.biaya_hapus:
                     coin = db_user.coin - config.biaya_hapus           
                 else:    
-       return await query.message.delete(coin, str (kirim.id))
+       return await query.message.delete(coin, str (kirim.id), client_id.bot)
     
     try:
         await query.message.reply_to_message.delete()
