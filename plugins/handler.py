@@ -199,7 +199,7 @@ async def hapus_menf(client: Client, query: CallbackQuery):
         pass
 
 @Bot.on_callback_query()
-async def on_callback_query(client: Client, query: CallbackQuery):
+async def on_callback_query(client: Client, msg: Message, query: CallbackQuery):
     if query.data == 'photo':
         await photo_handler_inline(client, query)
     elif query.data == 'video':
