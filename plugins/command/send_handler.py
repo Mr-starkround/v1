@@ -11,7 +11,7 @@ from pyrogram.errors import (
     FloodWait, PeerIdInvalid, UserIsBlocked, InputUserDeactivated
 )
 
-async def menfess_handler(client: Client, msg: Message, key: str, hastag: list):
+async def menfess_handler(client: Client, msg: Message):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
     user = db.get_data_pelanggan()
