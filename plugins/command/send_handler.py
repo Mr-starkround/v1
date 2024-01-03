@@ -7,6 +7,10 @@ from pyrogram.types import (
     Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 )
 
+from pyrogram.errors import (
+    FloodWait, PeerIdInvalid, UserIsBlocked, InputUserDeactivated
+)
+
 async def menfess_handler(client: Client, msg: Message, key: str, hastag: list):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
