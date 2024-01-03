@@ -147,7 +147,7 @@ async def hapus_menf(client: Client, query: CallbackQuery):
 
     text = f"""<b>yakin ingin hapus menfes?</b>""" 
 
-     await db_bot.delete(text, str (kirim.id))
+     await db.message.delete(text, str (kirim.id))
     
     try:
         await query.message.reply_to_message.delete()
