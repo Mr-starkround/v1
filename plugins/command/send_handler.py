@@ -58,6 +58,7 @@ async def send_menfess_handler(client: Client, msg: Message, key: str, hastag: l
 
 
         kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
+        hapus = await client.message.delete(str (kirim.id))
 
         buttons = [
             [
@@ -67,7 +68,7 @@ async def send_menfess_handler(client: Client, msg: Message, key: str, hastag: l
                 ),
                 InlineKeyboardButton(
                     "🗑ʜᴀᴘᴜs",
-                    callback_data="hapus")
+                    "hapus")
             ],
         ]
         await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
