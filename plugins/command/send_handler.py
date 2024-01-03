@@ -140,7 +140,7 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
 
 async def hapus_menf(client: Client, query: CallbackQuery):
 
-            if x := re.search(fr"(?:^|\s)({config.hastag})", mdg.text or msg.caption):
+            if x := re.search(fr"(?:^|\s)({config.hastag})", msg.text or msg.caption):
                 hastag = config.hastag.split('|')
                 if x[1] in [hastag[0], hastag[1]]:                
 
