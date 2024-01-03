@@ -7,18 +7,7 @@ from pyrogram.types import (
     Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 )
 
-async def menfess_handler(client: Client, msg: Message):  
-    user_db = Database(msg.from_user.id)
-    helper = Helper(client, msg)
-    user = db.get_data_pelanggan()
-   db_bot = db.get_data_bot()  
-        anu = await db_bot.copy(msg.from_user.id)
-        markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton('Ya', 'kirim'), InlineKeyboardButton('Tidak', 'ttp')]
-        ])
-        await anu.reply('apakah kamu yakin akan mengirimkan pesan ini?', True, reply_markup=markup)
-
-async def send_menfess(client: Client, query: CallbackQuery):
+async def menfess_handler(client: Client, msg: Message):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
     user = db.get_data_pelanggan()
@@ -38,35 +27,12 @@ async def send_menfess(client: Client, query: CallbackQuery):
         elif key == hastag[1]:
             picture = None
 
-        link = await get_link()
-        # Use regular expression to check for links in the message
-        if re.search(r"http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+", msg.text or ""):
-            return await msg.reply(f"Tidak diizinkan mengirimkan tautan.", quote=True)
-
-
-
-        kirim = await client.copy_message(config.channel_1, msg.from_user.id, msg.id)
-
-        buttons = [
-            [
-                InlineKeyboardButton(
-                    f"👀ʟɪʜᴀᴛ",
-                url=link + str(kirim.id),
-                ),
-                InlineKeyboardButton(
-                    "🗑ʜᴀᴘᴜs",
-                    callback_data="hps")
-            ],
-        ]
-        await helper.send_to_channel_log(type="log_channel", link=link + str(kirim.id))
-        await db.update_menfess(coin, menfess, all_menfess)
-        await msg.reply(f"Pesan anda <a href='{link + str(kirim.id)}'>berhasil terkirim.</a> \n\nhari ini kamu telah mengirim pesan sebanyak {menfess + 1}/{config.batas_kirim}. kamu dapat mengirim pesan sebanyak {config.batas_kirim} kali dalam sehari. \n\nwaktu reset setiap jam 1 pagi",       
-
-       disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
-        quote=True
- ),
-    else:
-        await msg.reply('media yang didukung photo, video dan voice')
+        anu = msg.reply_to_message
+        anu = await anu.copy(msg.chat.id, reply_to_message_id=anu.id)
+        markup = InlineKeyboardMarkup([
+            [InlineKeyboardButton('Ya', 'kirim'), InlineKeyboardButton('Tidak', 'ttp')]
+        ])
+        await anu.reply('apakah kamu yakin akan mengirimkan pesan ini ?', True, reply_markup=markup)
 
 async def send_menfess_handler(client: Client, query: CallbackQuery):
     helper = Helper(client, msg)
