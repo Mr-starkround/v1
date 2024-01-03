@@ -74,14 +74,3 @@ async def close_cbb(client: Client, query: CallbackQuery):
         await query.message.delete()
     except:
         pass
-
-async def menfess_handler(client: Client, msg: Message):  
-    user_db = Database(msg.from_user.id)
-    helper = Helper(client, msg)
-    user = db.get_data_pelanggan()  
-        anu = await user_db.copy()
-        markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton('Ya', 'kirim'), InlineKeyboardButton('Tidak', 'ttp')]
-        ])
-        await anu.reply('apakah kamu yakin akan mengirimkan pesan ini?', True, reply_markup=markup)
-
