@@ -180,28 +180,7 @@ async def on_message(client: Client, msg: Message):
         if command != None:
             return
 
-async def hapus_menf(client: Client, msg: Message, query: CallbackQuery):
 
-         uid = msg.from_user.id                
-        command = msg.text or msg.caption   
-
-
-        
-            if msg.sender_chat.id != config.channel_1:
-                return
-
-            if x := re.search(fr"(?:^|\s)({config.hastag})", command.lower()):
-                hastag = config.hastag.split('|')
-                if x[1] in [hastag[0]]:
-
-    try:
-        await query.message.reply_to_message.delete()
-    except:
-        pass
-    try:
-        await query.message.delete()
-    except:
-        pass
 
 @Bot.on_callback_query()
 async def on_callback_query(client: Client, query: CallbackQuery):
