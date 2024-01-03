@@ -180,7 +180,7 @@ async def on_message(client: Client, msg: Message):
         if command != None:
             return
 
-async def hapus_menf(client: Client, query: CallbackQuery):
+async def hapus_menf(client: Client, msg: Message, query: CallbackQuery):
      command = msg.text or msg.caption        
             if msg.sender_chat.id != config.channel_1:
                 return
@@ -199,7 +199,7 @@ async def hapus_menf(client: Client, query: CallbackQuery):
         pass
 
 @Bot.on_callback_query()
-async def on_callback_query(client: Client, msg: Message, query: CallbackQuery):
+async def on_callback_query(client: Client, query: CallbackQuery):
     if query.data == 'photo':
         await photo_handler_inline(client, query)
     elif query.data == 'video':
