@@ -75,8 +75,7 @@ async def send_menfess_handler(client: Client, msg: Message, key: str, hastag: l
        disable_web_page_preview=True,        reply_markup=InlineKeyboardMarkup(buttons),
         quote=True
  ),
-    else:
-        await msg.reply('media yang didukung photo, video dan voice')
+
 
 async def get_link():
     anu = str(config.channel_1).split('-100')[1]
