@@ -14,7 +14,7 @@ async def menfess_handler(client: Client, msg: Message):
         await anu.reply('apakah kamu akan mengirimkan pesan broadcast ?', True, reply_markup=markup)
 
 
-async def send_menfess(client: Client, msg: types.Message, key: str, hastag: list):
+async def send_menfess(client: Client, query: Callbackquery):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
     user = db.get_data_pelanggan()
