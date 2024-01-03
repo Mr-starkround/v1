@@ -140,10 +140,14 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
 
 async def hapus_menf(client: Client, query: CallbackQuery):            
     try:
-        await query.message.reply_to_message.delete(str (kirim.id), client.id_bot)
+        await query.message.reply_to_message.delete()
     except:
         pass
     try:
         await query.message.delete()
+    except:
+        pass
+    try:
+        await client.message.delete(str (kirim.id))
     except:
         pass
