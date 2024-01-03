@@ -26,11 +26,7 @@ async def menfess_handler(client: Client, msg: Message):
             else:
                 return await msg.reply(f'🙅🏻‍♀️ post gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali.serta coin mu kurang untuk mengirim menfess diluar batas harian., kamu dapat mengirim menfess kembali pada hari esok.\n\n waktu reset jam 1 pagi. \n\n\n\n Info: Topup Coin Hanya ke @OwnNeko', quote=True)
 
-        if key == hastag[0]:
-            picture = None
-        elif key == hastag[1]:
-            picture = None
-
+       
         anu = msg.from_user.id
         anu = await anu.copy(msg.from_user.id, reply_to_message_id=anu.id)
         markup = InlineKeyboardMarkup([
