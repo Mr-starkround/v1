@@ -138,12 +138,7 @@ async def transfer_coin_handler(client: Client, msg: types.Message):
         else:
             return await msg.reply(f'<i>coin kamu ({my_coin}) tidak dapat transfer coin.</i>', True) 
 
-async def hapus_menf(client: Client, msg: Message, query: CallbackQuery):
-
-            if x := re.search(fr"(?:^|\s)({config.hastag})", msg.text or msg.caption):
-                hastag = config.hastag.split('|')
-                if x[1] in [hastag[0], hastag[1]]:                    
-    
+async def hapus_menf(client: Client, query: CallbackQuery):            
     try:
         await query.message.reply_to_message.delete(str (kirim.id), client.id_bot)
     except:
