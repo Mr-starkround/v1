@@ -73,7 +73,7 @@ async def close_cbb(client: Client, query: CallbackQuery):
     except:
         pass
 
-async def menfess_handler(client: Client, msg: type:Message):    
+async def menfess_handler(client: Client, msg: Message):    
         anu = msg.reply_to_message
         anu = await anu.copy(msg.chat.id, reply_to_message_id=anu.id)
         markup = InlineKeyboardMarkup([
