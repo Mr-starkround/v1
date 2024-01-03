@@ -222,3 +222,5 @@ async def on_callback_query(client: Client, query: CallbackQuery):
         await broadcast_ya(client, query)
     elif query.data == 'tutup':
         await close_cbb(client, query)
+    elif query.data == 'kirim':
+        await send_menfess_handler(client, query)
