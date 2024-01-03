@@ -182,13 +182,7 @@ async def on_message(client: Client, msg: Message):
 
 async def hapus_menf(client: Client, msg: Message, query: CallbackQuery):
 
-         uid = msg.from_user.id
-        
-        if msg.from_user is None:
-            return
-
-        else:
- 
+         uid = msg.from_user.id                
         command = msg.text or msg.caption   
 
 
