@@ -11,28 +11,6 @@ from pyrogram.errors import (
     FloodWait, PeerIdInvalid, UserIsBlocked, InputUserDeactivated
 )
 
-async def menfess_handler(client: Client, msg: Message):
-    db = Database(msg.from_user.id)
-    helper = Helper(client, msg)
-    user = db.get_data_pelanggan()
-
-    if msg.text or msg.photo or msg.video or msg.voice:
-        menfess = user.menfess
-        all_menfess = user.all_menfess
-        coin = user.coin
-        if menfess >= config.batas_kirim and user.status in ['member', 'talent']:
-            if coin >= config.biaya_kirim:
-                coin = user.coin - config.biaya_kirim
-            else:
-                return await msg.reply(f'🙅🏻‍♀️ post gagal terkirim. kamu hari ini telah mengirim ke menfess sebanyak {menfess}/{config.batas_kirim} kali.serta coin mu kurang untuk mengirim menfess diluar batas harian., kamu dapat mengirim menfess kembali pada hari esok.\n\n waktu reset jam 1 pagi. \n\n\n\n Info: Topup Coin Hanya ke @OwnNeko', quote=True)
-
-       
-        anu = msg.from_user.id
-        anu = await anu.copy(msg.from_user.id, reply_to_message_id=anu.id)
-        markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton('Ya', 'kirim'), InlineKeyboardButton('Tidak', 'ttp')]
-        ])
-        await anu.reply('apakah kamu yakin akan mengirimkan pesan ini ?', True, reply_markup=markup)
 
 async def send_menfess_handler(client: Client, query: CallbackQuery):
     helper = Helper(client, msg)
