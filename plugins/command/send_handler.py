@@ -144,7 +144,8 @@ async def hapus_menf(client: Client, query: CallbackQuery):
                 hastag = config.hastag.split('|')
                 if x[1] in [hastag[0], hastag[1]]:                
 
-         query.message.delete(str (kirim.id), client.id_bot)
+      try:
+         await query.message.delete(str (kirim.id), client.id_bot)
     
     try:
         await query.message.reply_to_message.delete()
