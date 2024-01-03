@@ -3,9 +3,9 @@ import re
 
 from pyrogram import Client, types, enums
 from plugins import Database, Helper
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-
-
+from pyrogram.types import (
+    Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+)
 async def send_menfess(client: Client, query: Callbackquery):
     db = Database(msg.from_user.id)
     helper = Helper(client, msg)
